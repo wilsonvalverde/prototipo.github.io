@@ -1,0 +1,1515 @@
+<!DOCTYPE HTML>
+<!--
+	Paradigm Shift by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Registro</title>
+	<meta charset="utf-8" />
+	<link rel="icon" href="images/icon-nodo.png">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+</head>
+<script>
+	$(document).ready(function () {
+		const arrayProducts = new Array();
+		$('input[type=checkbox]').on('change', function() {
+			if ($(this).is(':checked') ) {
+				if($(this).val() != 'Bike' && $(this).val() != 'si'  ){
+					arrayProducts.push($(this).val());
+				}
+				
+			} else {
+				if($(this).val() != 'Bike' && $(this).val() != 'si'  ){
+					arrayProducts.removeItem($(this).val());
+				}
+			}
+		});
+		$('#formulario').submit(function (e) {
+			e.preventDefault();
+			// Capturamnos el boton de envío
+			var btnEnviar = $("#btnEnviar");
+			var time, work_area, business, position, funcion, reference, number_contact = new Array();
+			time = Array.from($("#copia select[name=time]")).map(elem => elem.value);
+			work_area = Array.from($("#copia select[name=work_area]")).map(elem => elem.value);
+			business = Array.from($("#copia input[name=business]")).map(elem => elem.value);
+			position = Array.from($("#copia input[name=position]")).map(elem => elem.value);
+			funcion = Array.from($("#copia input[name=function]")).map(elem => elem.value);
+			reference = Array.from($("#copia input[name=reference]")).map(elem => elem.value);
+			number_contact = Array.from($("#copia input[name=number_contact]")).map(elem => elem.value);
+			var datosexperience = new Array();
+			var lengthexperience = time.length;
+			for (var i = 0; i < lengthexperience; i++) {
+				datosexperience.push({
+					time: time[i],
+					work_area: work_area[i],
+					business: business[i],
+					position: position[i],
+					function: funcion[i],
+					reference: reference[i],
+					number_contact: number_contact[i]
+				});
+			}
+			var child_age, child_sex = new Array();
+			child_age = Array.from($("#destino3 input[name=child_age]")).map(elem => elem.value);
+			child_sex = Array.from($("#destino3 select[name=child_sex]")).map(elem => elem.value);
+			var datoschild = new Array();
+			var lengthchild = child_age.length;
+			for (var i = 0; i < lengthchild; i++) {
+				datoschild.push({
+					child_age: child_age[i],
+					child_sex: child_sex[i]
+				});
+			}
+			var social_network = new Array();
+				social_network.push({
+					facebook:$("#facebook").val(),
+					instagram:$("#instagram").val(),
+					linkedin:$("#linkedin").val(),
+					twitter:$("#twitter").val()
+					});
+			var fecha_actual = new Date();
+			var envio = Array();
+			envio = {
+				creation_date: fecha_actual,
+				name_user: $("#name_user").val(),
+				last_name_user: $("#last_name_user").val(),
+				dni_type: $("#dni_type").val(),
+				ci_user: $("#ci_user").val(),
+				birthday_user: $("#birthday_user").val(),
+				courses: JSON.stringify(Array.from(document.getElementsByName("courses")).map(elem => elem.value)),
+				experience: JSON.stringify(datosexperience),
+				products: JSON.stringify(arrayProducts),
+				gender_user: $("#gender_user").val(),
+				email_user: $("#email_user").val(),
+				country_birth: $("#country_birth").val(),
+				country_residence: $("#country_residence").val(),
+				state_user: $("#state_user").val(),
+				city_user: $("#city_user").val(),
+				district_user: $("#district_user").val(),
+				street_user: $("#street_user").val(),
+				family_responsibilities: $("#family_responsibilities").val(),
+				number_responsibilities: $("#number_responsibilities").val(),
+				responsibilities_data: JSON.stringify(datoschild),
+				civil_status: $("#civil_status").val(),
+				telephone_user: $("#telephone_user").val(),
+				mobile_user: $("#mobile_user").val(),
+				english_level: $("#english_level").val(),
+				bachi_title: $("#bachi_title").val(),
+				bachi_aca: $("#bachi_aca").val(),
+				tercerlevel_title: $("#tercerlevel_title").val(),
+				tercerlevel_aca: $("#tercerlevel_aca").val(),
+				master_title: $("#master_title").val(),
+				master_aca: $("#master_aca").val(),
+				doctorate_title: $("#doctorate_title").val(),
+				doctorate_aca: $("#doctorate_aca").val(),
+				own_transport: $("#own_transport").val(),
+				license: $("#license").val(),
+				license_type: $("#license_type").val(),
+				reading_level: $("#reading_level").val(),
+				writing_level: $("#writing_level").val(),
+				expresion_level: $("#expresion_level").val(),
+				work_experience: $("#work_experience").val(),
+				job: $("#job").val(),
+				add_information: $("#add_information").val(),
+				social_networks:JSON.stringify(social_network),
+				photo_user: $("#photo_user").val(),
+				ext_img:"."+$("#ext_img").val(),
+				teacher: $("#teacher").val()
+			}
+			var nombre = $("#name_user").val() + " " + $("#last_name_user").val()
+			ajaxx(envio, btnEnviar, nombre);
+			// Nos permite cancelar el envio del formulario
+		});
+	});
+	Array.prototype.removeItem = function (a) {
+		for (var i = 0; i < this.length; i++) {
+			if (this[i] == a) {
+				for (var i2 = i; i2 < this.length - 1; i2++) {
+					this[i2] = this[i2 + 1];
+				}
+				this.length = this.length - 1;
+				return;
+			}
+		}
+	};
+	function ajaxx(envio, btnEnviar, nombre) {
+		$.ajax({
+			type: "POST",
+			//url: "http://201.182.151.33:8086/job/new",
+			url: 'https://academia.nodo.com.ec/empleo',
+			//url: 'http://localhost:3000/job/new',
+			//data: ,
+			data: envio,
+			beforeSend: function () {
+                /*
+                * Esta función se ejecuta durante el envió de la petición al
+                * servidor.
+                * */
+				// btnEnviar.text("Enviando"); Para button 
+				btnEnviar.val("Enviando"); // Para input de tipo button
+				btnEnviar.attr("disabled", "disabled");
+			},
+			complete: function (data) {
+                /*
+                * Se ejecuta al termino de la petición
+                * */
+				btnEnviar.val("Enviar formulario");
+				btnEnviar.removeAttr("disabled");
+			},
+			success: function (data) {
+                /*
+                * Se ejecuta cuando termina la petición y esta ha sido
+                * correcta
+                * */
+				//$(".respuesta").html(data);
+				console.log(data);
+				localStorage.setItem('nombre', nombre);
+				window.location = "gracias.html"
+			},
+			error: function (data) {
+                /*
+                * Se ejecuta si la peticón ha sido erronea
+                * */
+				alert("La cedula o correo ya se encuentran registrados");
+				$("#respuesta").html(data.body);
+				console.log(data);
+
+			}
+		});
+	}
+
+
+
+
+	function hola() {
+		var str = ($("#hh").val());
+		envio();
+
+	}
+
+	function titulos(a) {
+		if ($("#" + a).prop('checked')) {
+			$("#" + a + "_title").removeAttr("disabled");
+			$("#" + a + "_aca").removeAttr("disabled");
+			$("#" + a).val('si')
+		} else {
+			$("#" + a + "_title").attr("disabled", "true");
+			$("#" + a + "_title").val("");
+			$("#" + a + "_aca").attr("disabled", "true");
+			$("#" + a + "_aca").val("");
+			$("#" + a).val('no')
+		}
+
+
+	}
+
+	function lectura(b) {
+		console.log($("#" + b).val());
+
+	}
+	function solonumeros(a) {
+		var e = $("#" + a).val();
+		var reg = /^\d+$/;
+		if (!reg.test(e)) {
+			$("#" + a).val("");
+		}
+	}
+	function sololetras(e) {
+		var key = e.keyCode || e.which,
+			tecla = String.fromCharCode(key).toLowerCase(),
+			letras = " áéíóúabcdefghijklmnñopqrstuvwxyz",
+			especiales = [8, 37, 39, 46],
+			tecla_especial = false;
+
+		for (var i in especiales) {
+			if (key == especiales[i]) {
+				tecla_especial = true;
+				break;
+			}
+		}
+
+		if (letras.indexOf(tecla) == -1 && !tecla_especial) {
+			return false;
+		}
+	}
+	function activardni(a) {
+		document.getElementById("salida").innerHTML = ('');
+		var e = $("#" + a).val();
+		$("#ci_user").removeAttr('disabled');
+		if (e == "CED") {
+			$("#ci_user").removeAttr('disabled');
+			$("#ci_user").val('');
+			$("#ci_user").attr('onchange', 'validarcedula(this.id)');
+			$("#ci_user").attr('onkeyup', 'solonumeros(this.id)')
+		} else {
+			$("#ci_user").removeAttr('disabled');
+			$("#ci_user").val('');
+			$("#ci_user").removeAttr('onchange');
+			$("#ci_user").removeAttr('onkeyup');
+		}
+
+	}
+	function validarcedula(a) {
+		var e = $("#" + a).val();
+
+
+		var cad = document.getElementById(a).value.trim();
+		var total = 0;
+		var longitud = cad.length;
+		var longcheck = longitud - 1;
+
+
+		for (i = 0; i < longcheck; i++) {
+			if (i % 2 === 0) {
+				var aux = cad.charAt(i) * 2;
+				if (aux > 9) aux -= 9;
+				total += aux;
+			} else {
+				total += parseInt(cad.charAt(i)); // parseInt o concatenará en lugar de sumar
+			}
+		}
+
+		total = total % 10 ? 10 - total % 10 : 0;
+
+		if (cad.charAt(longitud - 1) == total) {
+			document.getElementById("salida").innerHTML = ("* Cédula Válida");
+
+		} else {
+			document.getElementById("salida").innerHTML = ("* Cédula Inválida");
+
+			$("#ci_user").val('');
+		}
+
+	}
+	function clonar(a, b) {
+		//$("#"+origen).clone().appendTo("#"+destino);
+		//window.location="https://www.facebook.com/";
+		var div_copy = $('#' + a).clone();
+		div_copy.find('input[name=courses]').val("");//para quitar el valor
+		$('#' + b).append(div_copy);
+	}
+	function clonar2(a, b) {
+		//$("#"+origen).clone().appendTo("#"+destino);
+		//window.location="https://www.facebook.com/";
+		//$("#copias").removeAttr("hidden");
+		//$("#copia").removeAttr("hidden");
+		var div_copy = $('#' + a).clone();
+		div_copy.find('select[name=time]').val("");//para quitar el valor
+		div_copy.find('select[name=work_area]').val("");
+		div_copy.find('input[name=business]').val("");
+		div_copy.find('input[name=position]').val("");
+		div_copy.find('input[name=function]').val("");
+		div_copy.find('input[name=reference]').val("");
+		div_copy.find('input[name=number_contact]').val("");
+		$('#' + b).append(div_copy);
+
+	}
+	function validarfecha(id) {
+		/*
+		var vregexNaix = /^(0[1-9]|[1-2]\d|3[01])(\/)(0[1-9]|1[012])\2(\d{4})$/;
+		console.log($("#" + id).val());
+		console.log(vregexNaix.test($("#" + id).val()));
+		console.log(vregexNaix.test('20/10/2082'));*/
+	}
+	function experiencia(id) {
+		if ($("#" + id).val() == "si") {
+			clonar2('original', 'copia');
+			$("#botonclonar2").attr("type", 'button');
+		} else {
+			$("#copia").empty();
+			$("#botonclonar2").attr("type", 'hidden');
+			//	$("#copia").attr("hidden",'true');
+			//	$("#copias").attr("hidden",'true');
+		}
+
+	}
+	function licencia() {
+		if ($("#license").val() == "si") {
+			$("#license_type").removeAttr("disabled", "");
+		} else {
+			$("#license_type").val("");
+			$("#license_type").attr("disabled", "");
+		}
+
+	}
+	function responsibilities() {
+		if ($("#family_responsibilities").val() == "si") {
+			$("#age_responsibilities").removeAttr("disabled");
+			$("#number_responsibilities").removeAttr("disabled");
+			$("#titleCargas").removeAttr("hidden");
+		} else {
+			$("#age_responsibilities").attr('disabled', '');
+			$("#number_responsibilities").attr('disabled', '');
+			$("#number_responsibilities").val("");
+			$("#titleCargas").attr("hidden", 'true');
+			numeroentero(number_responsibilities);
+
+		}
+	}
+	function numeroentero(a) {
+
+		var padre = document.getElementById("destino3");
+		padre.innerHTML = '';
+		$("#tituloCargas").attr('hidden', 'true');
+		var b = $("#" + a).val().charAt(0);
+		if (b == '-') {
+			$("#" + a + "_input").val("");
+		}
+		var number = $("#number_responsibilities").val();
+		var paso;
+		for (paso = 0; paso < number; paso++) {
+			$("#tituloCargas").removeAttr('hidden');
+			var div_copy = $('#origen3').clone();
+			div_copy.find('input[name=courses]').val("");//para quitar el valor
+			$('#destino3').append(div_copy);
+		};
+
+	}
+	function clonar3() {
+		var number = $("#number_responsibilities").val();
+		var paso;
+		for (paso = 0; paso < number; paso++) {
+			var div_copy = $('#origen3').clone();
+			div_copy.find('input[name=courses]').val("");//para quitar el valor
+			$('#destino3').append(div_copy);
+		};
+	}
+	function activarPregunta(){
+		const job = $("#job").val();
+		if(job === 'Agente de ventas'){
+			$("#lista-productos").removeAttr('hidden');
+		}else{
+			$("#lista-productos").attr('hidden',true);
+		}
+
+		
+
+	}
+	function redsocial(){
+		var twi = $("#twitter").val();
+		var face =$("#facebook").val();
+		var inst = $("#instagram").val();
+		var like = $("#linkedin").val(); 
+		if(twi == "" && face == "" && inst == "" && like == "" ){
+			$("#avisored").removeAttr('hidden');
+			$("#twitter").attr('required','true');
+			$("#facebook").attr('required','true');
+			$("#instagram").attr('required','true');
+		 	$("#linkedin").attr('required','true');; 
+			
+		}else{
+			$("#avisored").attr('hidden','true');
+			$("#twitter").removeAttr('required');
+			$("#facebook").removeAttr('required');
+			$("#instagram").removeAttr('required');
+		 	$("#linkedin").removeAttr('required');
+		}
+
+		var valorselect = $("#job").val();
+		if(valorselect == 'Docente'){
+			$("#teacherid").removeAttr('hidden');
+		}else{
+			$("#teacherid").attr('hidden',true);
+			$("#teacherid").val('');
+
+
+		}
+		activarPregunta();
+		
+
+	}
+
+</script>
+
+<body>
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Intro -->
+		<section class="intro">
+			<header>
+				<h1><strong style=" color: #fff; font-family: sans-serif;font-weight: bolder;"> FORMA PARTE DE NUESTRO
+						EQUIPO</strong>
+				</h1>
+				<p>COMPLETA TU HOJA DE VIDA A CONTINUACIÓN </p>
+				<ul class="actions">
+					<li><a href="#first" class="arrow scrolly"><span class="label">Next</span></a></li>
+				</ul>
+			</header>
+			<div class="content">
+				<span class="image fill"><img src="images/Caratula.jpeg" alt="" /></span>
+			</div>
+		</section>
+
+	</div>
+	<section style="margin-right: 5%;margin-left: 5%;margin-top: 5%;" id="first">
+		<header>
+			<h2>Registro</h2>
+		</header>
+		<div class="content">
+			<form id="formulario">
+				<div class="field">
+					<label for="demo-category">¿ A QUÉ PUESTO TE GUSTARIA APLICAR ? :</label>
+					<select name="job" id="job" onclick="redsocial()" required>
+						<option value="" disabled selected>Seleccionar</option>
+						<option value="Agente de ventas">Agente de ventas</option>
+						<option value="Servicio de atención al cliente">Servicio de atención al cliente</option>
+						<option value="Asistente administrativo/gerencia">Asistente administrativo/gerencia</option>
+						<option value="Pasante">Pasante</option>
+						<!--
+						<option value="Administrador de redes">Administrador de redes</option>
+						<option value="Servicio de call center y soporte técnico">Servicio de call center y soporte técnico</option>
+						<option value="Comunicador">Comunicador</option>
+						<option value="Contador">Contador</option>
+						<option value="Docente">Docente</option>
+						<option value="Diseñador">Diseñador</option>
+						<option value="Desarrollador">Desarrollador</option>
+						<option value="Especialista en Redes">Especialista en Redes</option>
+						<option value="Marketing">Marketing</option>
+						<option value="Pasante">Pasante</option>
+						<option value="Partner - Distribuidor Autorizado">Partner - Distribuidor Autorizado</option>
+						<option value="Relacionador Publico">Relacionador Público</option>
+						<option value="Técnico de Campo">Técnico de Campo</option>
+						-->
+						
+					</select>
+				</div><BR>
+					<div class="field" id="lista-productos" hidden >
+						<label>¿Qué productos prefieres o tienes experiencia de venta?:</label>
+						<div class="row">
+							<div class="col-3">
+								<input type="checkbox" id="p1"  name="products" value="Planes de internet">
+								<label for="p1">Planes de internet</label>
+								<input type="checkbox" id="p2" name="products" value="Servicios de telecomunicaciones">
+								<label for="p2">Servicios de telecomunicaciones</label>
+								<input type="checkbox" id="p3"  name="products" value="Cursos online para niños">
+								<label for="p3">Cursos online para niños</label>
+								
+								
+							</div>
+							<div class="col-2">
+								<input type="checkbox" id="p4"  name="products" value="Alimentos">
+								<label for="p4">Alimentos</label>
+								<input type="checkbox" id="p5"  name="products" value="Tecnología">
+								<label for="p5">Tecnología</label>
+								<input type="checkbox" id="p6"  name="products" value="Cursos para profesionales">
+								<label for="p6">Cursos para profesionales</label>
+							</div>
+							<div class="col-3">
+								<input type="checkbox" id="p7"  name="products" value="Plataformas multiservicios">
+								<label for="p7">Plataformas multiservicios</label>
+
+							</div>
+							
+						</div>
+
+
+					</div>
+				<div class="fields">
+
+					<div class="field half">
+						<input type="text" name="name_user" id="name_user" onkeypress="return sololetras(event)"
+							placeholder="Nombres" title="Ingrese solo Letras porfavor" required />
+					</div>
+					<div class="field half">
+						<input type="text" name="last_name_user" id="last_name_user" placeholder="Apellidos"
+							onkeypress="return sololetras(event)" title="Ingrese solo Letras porfavor" required />
+					</div>
+					<div class="field half" style="column-count: 2;">
+						<select name="dni_type" id="dni_type" onchange="activardni(this.id)" required>
+							<option value="" disabled selected>Tipo DNI</option>
+							<option value="CED">Cédula</option>
+							<option value="PAS">Pasaporte</option>
+						</select>
+						<div id="salida" style="color: crimson; font-weight: 10px;"></div>
+						<input type="text" name="ci_user" id="ci_user" onchange="validarcedula(this.id)"
+							onkeyup="solonumeros(this.id)" placeholder="Identificación" disabled pattern="[0-9]+"
+							title="Ingrese una indentificación valida" required />
+
+					</div>
+
+					<div class="field half" style="column-count: 2;">
+						<label for="demo-email" style="padding-top: 3%;padding-left: 5%;">Fecha de
+							Nacimiento</label>
+						<input type="date" style="width: 60%" onchange="validarfecha(this.id)" name="birthday_user"
+							id="birthday_user" placeholder="Fecha de nacimiento" min="1980-03-01" max="2005-12-31"
+							required />
+					</div>
+					<div class="field half">
+						<input type="email" name="email_user" id="email_user" value="" placeholder="Correo electrónico"
+							required />
+					</div>
+
+
+					<div class="field half">
+						<select name="country_birth" id="country_birth" class="drp" style="width:250;height:20"
+							width=250 required>
+							<option value="" id="" selected disabled>País de nacimiento </option>
+							<option value="Afganistán" id="AF">Afganistán</option>
+							<option value="Albania" id="AL">Albania</option>
+							<option value="Alemania" id="DE">Alemania</option>
+							<option value="Andorra" id="AD">Andorra</option>
+							<option value="Angola" id="AO">Angola</option>
+							<option value="Anguila" id="AI">Anguila</option>
+							<option value="Antártida" id="AQ">Antártida</option>
+							<option value="Antigua y Barbuda" id="AG">Antigua y Barbuda</option>
+							<option value="Antillas holandesas" id="AN">Antillas holandesas</option>
+							<option value="Arabia Saudí" id="SA">Arabia Saudí</option>
+							<option value="Argelia" id="DZ">Argelia</option>
+							<option value="Argentina" id="AR">Argentina</option>
+							<option value="Armenia" id="AM">Armenia</option>
+							<option value="Aruba" id="AW">Aruba</option>
+							<option value="Australia" id="AU">Australia</option>
+							<option value="Austria" id="AT">Austria</option>
+							<option value="Azerbaiyán" id="AZ">Azerbaiyán</option>
+							<option value="Bahamas" id="BS">Bahamas</option>
+							<option value="Bahrein" id="BH">Bahrein</option>
+							<option value="Bangladesh" id="BD">Bangladesh</option>
+							<option value="Barbados" id="BB">Barbados</option>
+							<option value="Bélgica" id="BE">Bélgica</option>
+							<option value="Belice" id="BZ">Belice</option>
+							<option value="Benín" id="BJ">Benín</option>
+							<option value="Bermudas" id="BM">Bermudas</option>
+							<option value="Bhután" id="BT">Bhután</option>
+							<option value="Bielorrusia" id="BY">Bielorrusia</option>
+							<option value="Birmania" id="MM">Birmania</option>
+							<option value="Bolivia" id="BO">Bolivia</option>
+							<option value="Bosnia y Herzegovina" id="BA">Bosnia y Herzegovina</option>
+							<option value="Botsuana" id="BW">Botsuana</option>
+							<option value="Brasil" id="BR">Brasil</option>
+							<option value="Brunei" id="BN">Brunei</option>
+							<option value="Bulgaria" id="BG">Bulgaria</option>
+							<option value="Burkina Faso" id="BF">Burkina Faso</option>
+							<option value="Burundi" id="BI">Burundi</option>
+							<option value="Cabo Verde" id="CV">Cabo Verde</option>
+							<option value="Camboya" id="KH">Camboya</option>
+							<option value="Camerún" id="CM">Camerún</option>
+							<option value="Canadá" id="CA">Canadá</option>
+							<option value="Chad" id="TD">Chad</option>
+							<option value="Chile" id="CL">Chile</option>
+							<option value="China" id="CN">China</option>
+							<option value="Chipre" id="CY">Chipre</option>
+							<option value="Ciudad estado del Vaticano" id="VA">Ciudad estado del Vaticano</option>
+							<option value="Colombia" id="CO">Colombia</option>
+							<option value="Comores" id="KM">Comores</option>
+							<option value="Congo" id="CG">Congo</option>
+							<option value="Corea" id="KR">Corea</option>
+							<option value="Corea del Norte" id="KP">Corea del Norte</option>
+							<option value="Costa del Marfíl" id="CI">Costa del Marfíl</option>
+							<option value="Costa Rica" id="CR">Costa Rica</option>
+							<option value="Croacia" id="HR">Croacia</option>
+							<option value="Cuba" id="CU">Cuba</option>
+							<option value="Dinamarca" id="DK">Dinamarca</option>
+							<option value="Djibouri" id="DJ">Djibouri</option>
+							<option value="Dominica" id="DM">Dominica</option>
+							<option value="Ecuador" id="EC">Ecuador</option>
+							<option value="Egipto" id="EG">Egipto</option>
+							<option value="El Salvador" id="SV">El Salvador</option>
+							<option value="Emiratos Arabes Unidos" id="AE">Emiratos Arabes Unidos</option>
+							<option value="Eritrea" id="ER">Eritrea</option>
+							<option value="Eslovaquia" id="SK">Eslovaquia</option>
+							<option value="Eslovenia" id="SI">Eslovenia</option>
+							<option value="España" id="ES">España</option>
+							<option value="Estados Unidos" id="US">Estados Unidos</option>
+							<option value="Estonia" id="EE">Estonia</option>
+							<option value="c" id="ET">Etiopía</option>
+							<option value="Ex-República Yugoslava de Macedonia" id="MK">Ex-República Yugoslava de
+								Macedonia</option>
+							<option value="Filipinas" id="PH">Filipinas</option>
+							<option value="Finlandia" id="FI">Finlandia</option>
+							<option value="Francia" id="FR">Francia</option>
+							<option value="Gabón" id="GA">Gabón</option>
+							<option value="Gambia" id="GM">Gambia</option>
+							<option value="Georgia" id="GE">Georgia</option>
+							<option value="Georgia del Sur y las islas Sandwich del Sur" id="GS">Georgia del Sur y las
+								islas Sandwich del Sur</option>
+							<option value="Ghana" id="GH">Ghana</option>
+							<option value="Gibraltar" id="GI">Gibraltar</option>
+							<option value="Granada" id="GD">Granada</option>
+							<option value="Grecia" id="GR">Grecia</option>
+							<option value="Groenlandia" id="GL">Groenlandia</option>
+							<option value="Guadalupe" id="GP">Guadalupe</option>
+							<option value="Guam" id="GU">Guam</option>
+							<option value="Guatemala" id="GT">Guatemala</option>
+							<option value="Guayana" id="GY">Guayana</option>
+							<option value="Guayana francesa" id="GF">Guayana francesa</option>
+							<option value="Guinea" id="GN">Guinea</option>
+							<option value="Guinea Ecuatorial" id="GQ">Guinea Ecuatorial</option>
+							<option value="Guinea-Bissau" id="GW">Guinea-Bissau</option>
+							<option value="Haití" id="HT">Haití</option>
+							<option value="Holanda" id="NL">Holanda</option>
+							<option value="Honduras" id="HN">Honduras</option>
+							<option value="Hong Kong R. A. E" id="HK">Hong Kong R. A. E</option>
+							<option value="Hungría" id="HU">Hungría</option>
+							<option value="India" id="IN">India</option>
+							<option value="Indonesia" id="ID">Indonesia</option>
+							<option value="Irak" id="IQ">Irak</option>
+							<option value="Irán" id="IR">Irán</option>
+							<option value="Irlanda" id="IE">Irlanda</option>
+							<option value="Isla Bouvet" id="BV">Isla Bouvet</option>
+							<option value="Isla Christmas" id="CX">Isla Christmas</option>
+							<option value="Isla Heard e Islas McDonald" id="HM">Isla Heard e Islas McDonald</option>
+							<option value="Islandia" id="IS">Islandia</option>
+							<option value="Islas Caimán" id="KY">Islas Caimán</option>
+							<option value="Islas Cook" id="CK">Islas Cook</option>
+							<option value="Islas de Cocos o Keeling" id="CC">Islas de Cocos o Keeling</option>
+							<option value="Islas Faroe" id="FO">Islas Faroe</option>
+							<option value="Islas Fiyi" id="FJ">Islas Fiyi</option>
+							<option value="Islas Malvinas Islas Falkland" id="FK">Islas Malvinas Islas Falkland</option>
+							<option value="Islas Marianas del norte" id="MP">Islas Marianas del norte</option>
+							<option value="Islas Marshall" id="MH">Islas Marshall</option>
+							<option value="Islas menores de Estados Unidos" id="UM">Islas menores de Estados Unidos
+							</option>
+							<option value="Islas Palau" id="PW">Islas Palau</option>
+							<option value="Islas Salomón" d="SB">Islas Salomón</option>
+							<option value="Islas Tokelau" id="TK">Islas Tokelau</option>
+							<option value="Islas Turks y Caicos" id="TC">Islas Turks y Caicos</option>
+							<option value="Islas Vírgenes EE.UU." id="VI">Islas Vírgenes EE.UU.</option>
+							<option value="Islas Vírgenes Reino Unido" id="VG">Islas Vírgenes Reino Unido</option>
+							<option value="Israel" id="IL">Israel</option>
+							<option value="Italia" id="IT">Italia</option>
+							<option value="Jamaica" id="JM">Jamaica</option>
+							<option value="Japón" id="JP">Japón</option>
+							<option value="Jordania" id="JO">Jordania</option>
+							<option value="Kazajistán" id="KZ">Kazajistán</option>
+							<option value="Kenia" id="KE">Kenia</option>
+							<option value="Kirguizistán" id="KG">Kirguizistán</option>
+							<option value="Kiribati" id="KI">Kiribati</option>
+							<option value="Kuwait" id="KW">Kuwait</option>
+							<option value="Laos" id="LA">Laos</option>
+							<option value="Lesoto" id="LS">Lesoto</option>
+							<option value="Letonia" id="LV">Letonia</option>
+							<option value="Líbano" id="LB">Líbano</option>
+							<option value="Liberia" id="LR">Liberia</option>
+							<option value="Libia" id="LY">Libia</option>
+							<option value="Liechtenstein" id="LI">Liechtenstein</option>
+							<option value="Lituania" id="LT">Lituania</option>
+							<option value="Luxemburgo" id="LU">Luxemburgo</option>
+							<option value="Macao R. A. E" id="MO">Macao R. A. E</option>
+							<option value="Madagascar" id="MG">Madagascar</option>
+							<option value="Malasia" id="MY">Malasia</option>
+							<option value="Malawi" id="MW">Malawi</option>
+							<option value="Maldivas" id="MV">Maldivas</option>
+							<option value="Malí" id="ML">Malí</option>
+							<option value="Malta" id="MT">Malta</option>
+							<option value="Marruecos" id="MA">Marruecos</option>
+							<option value="Martinica" id="MQ">Martinica</option>
+							<option value="Mauricio" id="MU">Mauricio</option>
+							<option value="Mauritania" id="MR">Mauritania</option>
+							<option value="Mayotte" id="YT">Mayotte</option>
+							<option value="México" id="MX">México</option>
+							<option value="Micronesia" id="FM">Micronesia</option>
+							<option value="Moldavia" id="MD">Moldavia</option>
+							<option value="Mónaco" id="MC">Mónaco</option>
+							<option value="Mongolia" id="MN">Mongolia</option>
+							<option value="Montserrat" id="MS">Montserrat</option>
+							<option value="Mozambique" id="MZ">Mozambique</option>
+							<option value="Namibia" id="NA">Namibia</option>
+							<option value="Nauru" id="NR">Nauru</option>
+							<option value="Nepal" id="NP">Nepal</option>
+							<option value="Nicaragua" id="NI">Nicaragua</option>
+							<option value="Níger" id="NE">Níger</option>
+							<option value="Nigeria" id="NG">Nigeria</option>
+							<option value="Niue" id="NU">Niue</option>
+							<option value="Norfolk" id="NF">Norfolk</option>
+							<option value="Noruega" id="NO">Noruega</option>
+							<option value="Nueva Caledonia" id="NC">Nueva Caledonia</option>
+							<option value="Nueva Zelanda" id="NZ">Nueva Zelanda</option>
+							<option value="Omán" id="OM">Omán</option>
+							<option value="Panamá" id="PA">Panamá</option>
+							<option value="Papua Nueva Guinea" id="PG">Papua Nueva Guinea</option>
+							<option value="Paquistán" id="PK">Paquistán</option>
+							<option value="Paraguay" id="PY">Paraguay</option>
+							<option value="Perú" id="PE">Perú</option>
+							<option value="Pitcairn" id="PN">Pitcairn</option>
+							<option value="Polinesia francesa" id="PF">Polinesia francesa</option>
+							<option value="Polonia" id="PL">Polonia</option>
+							<option value="Portugal" id="PT">Portugal</option>
+							<option value="Puerto Rico" id="PR">Puerto Rico</option>
+							<option value="Qatar" id="QA">Qatar</option>
+							<option value="Reino Unido" id="UK">Reino Unido</option>
+							<option value="República Centroafricana" id="CF">República Centroafricana</option>
+							<option value="República Checa" id="CZ">República Checa</option>
+							<option value="República de Sudáfrica" id="ZA">República de Sudáfrica</option>
+							<option value="República Democrática del Congo Zaire" id="CD">República Democrática del
+								Congo Zaire</option>
+							<option value="República Dominicana" id="DO">República Dominicana</option>
+							<option value="Reunión" id="RE">Reunión</option>
+							<option value="Ruanda" id="RW">Ruanda</option>
+							<option value="Rumania" id="RO">Rumania</option>
+							<option value="Rusia" id="RU">Rusia</option>
+							<option value="Samoa" id="WS">Samoa</option>
+							<option value="Samoa occidental" id="AS">Samoa occidental</option>
+							<option value="San Kitts y Nevis" id="KN">San Kitts y Nevis</option>
+							<option value="San Marino" id="SM">San Marino</option>
+							<option value="San Pierre y Miquelon" id="PM">San Pierre y Miquelon</option>
+							<option value="San Vicente e Islas Granadinas" id="VC">San Vicente e Islas Granadinas
+							</option>
+							<option value="Santa Helena" id="SH">Santa Helena</option>
+							<option value="Santa Lucía" id="LC">Santa Lucía</option>
+							<option value="Santo Tomé y Príncipe" id="ST">Santo Tomé y Príncipe</option>
+							<option value="Senegal" id="SN">Senegal</option>
+							<option value="Serbia y Montenegro" id="YU">Serbia y Montenegro</option>
+							<option value="Sychelles" id="SC">Seychelles</option>
+							<option value="Sierra Leona" id="SL">Sierra Leona</option>
+							<option value="Singapur" id="SG">Singapur</option>
+							<option value="Siria" id="SY">Siria</option>
+							<option value="Somalia" id="SO">Somalia</option>
+							<option value="Sri Lanka" id="LK">Sri Lanka</option>
+							<option value="Suazilandia" id="SZ">Suazilandia</option>
+							<option value="Sudán" id="SD">Sudán</option>
+							<option value="Suecia" id="SE">Suecia</option>
+							<option value="Suiza" id="CH">Suiza</option>
+							<option value="Surinam" id="SR">Surinam</option>
+							<option value="Svalbard" id="SJ">Svalbard</option>
+							<option value="Tailandia" id="TH">Tailandia</option>
+							<option value="Taiwán" id="TW">Taiwán</option>
+							<option value="Tanzania" id="TZ">Tanzania</option>
+							<option value="Tayikistán" id="TJ">Tayikistán</option>
+							<option value="Territorios británicos del océano Indico" id="IO">Territorios británicos del
+								océano Indico</option>
+							<option value="Territorios franceses del sur" id="TF">Territorios franceses del sur</option>
+							<option value="Timor Oriental" id="TP">Timor Oriental</option>
+							<option value="Togo" id="TG">Togo</option>
+							<option value="Tonga" id="TO">Tonga</option>
+							<option value="Trinidad y Tobago" id="TT">Trinidad y Tobago</option>
+							<option value="Túnez" id="TN">Túnez</option>
+							<option value="Turkmenistán" id="TM">Turkmenistán</option>
+							<option value="Turquía" id="TR">Turquía</option>
+							<option value="Tuvalu" id="TV">Tuvalu</option>
+							<option value="Ucrania" id="UA">Ucrania</option>
+							<option value="Uganda" id="UG">Uganda</option>
+							<option value="Uruguay" id="UY">Uruguay</option>
+							<option value="Uzbekistán" id="UZ">Uzbekistán</option>
+							<option value="Vanuatu" id="VU">Vanuatu</option>
+							<option value="Venezuela" id="VE">Venezuela</option>
+							<option value="Vietnam" id="VN">Vietnam</option>
+							<option value="Wallis y Futuna" id="WF">Wallis y Futuna</option>
+							<option value="Yemen" id="YE">Yemen</option>
+							<option value="Zambia" id="ZM">Zambia</option>
+							<option value="Zimbabue" id="ZW">Zimbabue</option>
+						</select>
+
+					</div>
+					<div class="field half">
+						<select id="country_residence" class="drp" name="country_residence"
+							style="width:250;height:20" width=250 required>
+							<option value="" id="" selected disabled>País de residencia </option>
+							<option value="Afganistán" id="AF">Afganistán</option>
+							<option value="Albania" id="AL">Albania</option>
+							<option value="Alemania" id="DE">Alemania</option>
+							<option value="Andorra" id="AD">Andorra</option>
+							<option value="Angola" id="AO">Angola</option>
+							<option value="Anguila" id="AI">Anguila</option>
+							<option value="Antártida" id="AQ">Antártida</option>
+							<option value="Antigua y Barbuda" id="AG">Antigua y Barbuda</option>
+							<option value="Antillas holandesas" id="AN">Antillas holandesas</option>
+							<option value="Arabia Saudí" id="SA">Arabia Saudí</option>
+							<option value="Argelia" id="DZ">Argelia</option>
+							<option value="Argentina" id="AR">Argentina</option>
+							<option value="Armenia" id="AM">Armenia</option>
+							<option value="Aruba" id="AW">Aruba</option>
+							<option value="Australia" id="AU">Australia</option>
+							<option value="Austria" id="AT">Austria</option>
+							<option value="Azerbaiyán" id="AZ">Azerbaiyán</option>
+							<option value="Bahamas" id="BS">Bahamas</option>
+							<option value="Bahrein" id="BH">Bahrein</option>
+							<option value="Bangladesh" id="BD">Bangladesh</option>
+							<option value="Barbados" id="BB">Barbados</option>
+							<option value="Bélgica" id="BE">Bélgica</option>
+							<option value="Belice" id="BZ">Belice</option>
+							<option value="Benín" id="BJ">Benín</option>
+							<option value="Bermudas" id="BM">Bermudas</option>
+							<option value="Bhután" id="BT">Bhután</option>
+							<option value="Bielorrusia" id="BY">Bielorrusia</option>
+							<option value="Birmania" id="MM">Birmania</option>
+							<option value="Bolivia" id="BO">Bolivia</option>
+							<option value="Bosnia y Herzegovina" id="BA">Bosnia y Herzegovina</option>
+							<option value="Botsuana" id="BW">Botsuana</option>
+							<option value="Brasil" id="BR">Brasil</option>
+							<option value="Brunei" id="BN">Brunei</option>
+							<option value="Bulgaria" id="BG">Bulgaria</option>
+							<option value="Burkina Faso" id="BF">Burkina Faso</option>
+							<option value="Burundi" id="BI">Burundi</option>
+							<option value="Cabo Verde" id="CV">Cabo Verde</option>
+							<option value="Camboya" id="KH">Camboya</option>
+							<option value="Camerún" id="CM">Camerún</option>
+							<option value="Canadá" id="CA">Canadá</option>
+							<option value="Chad" id="TD">Chad</option>
+							<option value="Chile" id="CL">Chile</option>
+							<option value="China" id="CN">China</option>
+							<option value="Chipre" id="CY">Chipre</option>
+							<option value="Ciudad estado del Vaticano" id="VA">Ciudad estado del Vaticano</option>
+							<option value="Colombia" id="CO">Colombia</option>
+							<option value="Comores" id="KM">Comores</option>
+							<option value="Congo" id="CG">Congo</option>
+							<option value="Corea" id="KR">Corea</option>
+							<option value="Corea del Norte" id="KP">Corea del Norte</option>
+							<option value="Costa del Marfíl" id="CI">Costa del Marfíl</option>
+							<option value="Costa Rica" id="CR">Costa Rica</option>
+							<option value="Croacia" id="HR">Croacia</option>
+							<option value="Cuba" id="CU">Cuba</option>
+							<option value="Dinamarca" id="DK">Dinamarca</option>
+							<option value="Djibouri" id="DJ">Djibouri</option>
+							<option value="Dominica" id="DM">Dominica</option>
+							<option value="Ecuador" id="EC">Ecuador</option>
+							<option value="Egipto" id="EG">Egipto</option>
+							<option value="El Salvador" id="SV">El Salvador</option>
+							<option value="Emiratos Arabes Unidos" id="AE">Emiratos Arabes Unidos</option>
+							<option value="Eritrea" id="ER">Eritrea</option>
+							<option value="Eslovaquia" id="SK">Eslovaquia</option>
+							<option value="Eslovenia" id="SI">Eslovenia</option>
+							<option value="España" id="ES">España</option>
+							<option value="Estados Unidos" id="US">Estados Unidos</option>
+							<option value="Estonia" id="EE">Estonia</option>
+							<option value="c" id="ET">Etiopía</option>
+							<option value="Ex-República Yugoslava de Macedonia" id="MK">Ex-República Yugoslava de
+								Macedonia</option>
+							<option value="Filipinas" id="PH">Filipinas</option>
+							<option value="Finlandia" id="FI">Finlandia</option>
+							<option value="Francia" id="FR">Francia</option>
+							<option value="Gabón" id="GA">Gabón</option>
+							<option value="Gambia" id="GM">Gambia</option>
+							<option value="Georgia" id="GE">Georgia</option>
+							<option value="Georgia del Sur y las islas Sandwich del Sur" id="GS">Georgia del Sur y las
+								islas Sandwich del Sur</option>
+							<option value="Ghana" id="GH">Ghana</option>
+							<option value="Gibraltar" id="GI">Gibraltar</option>
+							<option value="Granada" id="GD">Granada</option>
+							<option value="Grecia" id="GR">Grecia</option>
+							<option value="Groenlandia" id="GL">Groenlandia</option>
+							<option value="Guadalupe" id="GP">Guadalupe</option>
+							<option value="Guam" id="GU">Guam</option>
+							<option value="Guatemala" id="GT">Guatemala</option>
+							<option value="Guayana" id="GY">Guayana</option>
+							<option value="Guayana francesa" id="GF">Guayana francesa</option>
+							<option value="Guinea" id="GN">Guinea</option>
+							<option value="Guinea Ecuatorial" id="GQ">Guinea Ecuatorial</option>
+							<option value="Guinea-Bissau" id="GW">Guinea-Bissau</option>
+							<option value="Haití" id="HT">Haití</option>
+							<option value="Holanda" id="NL">Holanda</option>
+							<option value="Honduras" id="HN">Honduras</option>
+							<option value="Hong Kong R. A. E" id="HK">Hong Kong R. A. E</option>
+							<option value="Hungría" id="HU">Hungría</option>
+							<option value="India" id="IN">India</option>
+							<option value="Indonesia" id="ID">Indonesia</option>
+							<option value="Irak" id="IQ">Irak</option>
+							<option value="Irán" id="IR">Irán</option>
+							<option value="Irlanda" id="IE">Irlanda</option>
+							<option value="Isla Bouvet" id="BV">Isla Bouvet</option>
+							<option value="Isla Christmas" id="CX">Isla Christmas</option>
+							<option value="Isla Heard e Islas McDonald" id="HM">Isla Heard e Islas McDonald</option>
+							<option value="Islandia" id="IS">Islandia</option>
+							<option value="Islas Caimán" id="KY">Islas Caimán</option>
+							<option value="Islas Cook" id="CK">Islas Cook</option>
+							<option value="Islas de Cocos o Keeling" id="CC">Islas de Cocos o Keeling</option>
+							<option value="Islas Faroe" id="FO">Islas Faroe</option>
+							<option value="Islas Fiyi" id="FJ">Islas Fiyi</option>
+							<option value="Islas Malvinas Islas Falkland" id="FK">Islas Malvinas Islas Falkland</option>
+							<option value="Islas Marianas del norte" id="MP">Islas Marianas del norte</option>
+							<option value="Islas Marshall" id="MH">Islas Marshall</option>
+							<option value="Islas menores de Estados Unidos" id="UM">Islas menores de Estados Unidos
+							</option>
+							<option value="Islas Palau" id="PW">Islas Palau</option>
+							<option value="Islas Salomón" d="SB">Islas Salomón</option>
+							<option value="Islas Tokelau" id="TK">Islas Tokelau</option>
+							<option value="Islas Turks y Caicos" id="TC">Islas Turks y Caicos</option>
+							<option value="Islas Vírgenes EE.UU." id="VI">Islas Vírgenes EE.UU.</option>
+							<option value="Islas Vírgenes Reino Unido" id="VG">Islas Vírgenes Reino Unido</option>
+							<option value="Israel" id="IL">Israel</option>
+							<option value="Italia" id="IT">Italia</option>
+							<option value="Jamaica" id="JM">Jamaica</option>
+							<option value="Japón" id="JP">Japón</option>
+							<option value="Jordania" id="JO">Jordania</option>
+							<option value="Kazajistán" id="KZ">Kazajistán</option>
+							<option value="Kenia" id="KE">Kenia</option>
+							<option value="Kirguizistán" id="KG">Kirguizistán</option>
+							<option value="Kiribati" id="KI">Kiribati</option>
+							<option value="Kuwait" id="KW">Kuwait</option>
+							<option value="Laos" id="LA">Laos</option>
+							<option value="Lesoto" id="LS">Lesoto</option>
+							<option value="Letonia" id="LV">Letonia</option>
+							<option value="Líbano" id="LB">Líbano</option>
+							<option value="Liberia" id="LR">Liberia</option>
+							<option value="Libia" id="LY">Libia</option>
+							<option value="Liechtenstein" id="LI">Liechtenstein</option>
+							<option value="Lituania" id="LT">Lituania</option>
+							<option value="Luxemburgo" id="LU">Luxemburgo</option>
+							<option value="Macao R. A. E" id="MO">Macao R. A. E</option>
+							<option value="Madagascar" id="MG">Madagascar</option>
+							<option value="Malasia" id="MY">Malasia</option>
+							<option value="Malawi" id="MW">Malawi</option>
+							<option value="Maldivas" id="MV">Maldivas</option>
+							<option value="Malí" id="ML">Malí</option>
+							<option value="Malta" id="MT">Malta</option>
+							<option value="Marruecos" id="MA">Marruecos</option>
+							<option value="Martinica" id="MQ">Martinica</option>
+							<option value="Mauricio" id="MU">Mauricio</option>
+							<option value="Mauritania" id="MR">Mauritania</option>
+							<option value="Mayotte" id="YT">Mayotte</option>
+							<option value="México" id="MX">México</option>
+							<option value="Micronesia" id="FM">Micronesia</option>
+							<option value="Moldavia" id="MD">Moldavia</option>
+							<option value="Mónaco" id="MC">Mónaco</option>
+							<option value="Mongolia" id="MN">Mongolia</option>
+							<option value="Montserrat" id="MS">Montserrat</option>
+							<option value="Mozambique" id="MZ">Mozambique</option>
+							<option value="Namibia" id="NA">Namibia</option>
+							<option value="Nauru" id="NR">Nauru</option>
+							<option value="Nepal" id="NP">Nepal</option>
+							<option value="Nicaragua" id="NI">Nicaragua</option>
+							<option value="Níger" id="NE">Níger</option>
+							<option value="Nigeria" id="NG">Nigeria</option>
+							<option value="Niue" id="NU">Niue</option>
+							<option value="Norfolk" id="NF">Norfolk</option>
+							<option value="Noruega" id="NO">Noruega</option>
+							<option value="Nueva Caledonia" id="NC">Nueva Caledonia</option>
+							<option value="Nueva Zelanda" id="NZ">Nueva Zelanda</option>
+							<option value="Omán" id="OM">Omán</option>
+							<option value="Panamá" id="PA">Panamá</option>
+							<option value="Papua Nueva Guinea" id="PG">Papua Nueva Guinea</option>
+							<option value="Paquistán" id="PK">Paquistán</option>
+							<option value="Paraguay" id="PY">Paraguay</option>
+							<option value="Perú" id="PE">Perú</option>
+							<option value="Pitcairn" id="PN">Pitcairn</option>
+							<option value="Polinesia francesa" id="PF">Polinesia francesa</option>
+							<option value="Polonia" id="PL">Polonia</option>
+							<option value="Portugal" id="PT">Portugal</option>
+							<option value="Puerto Rico" id="PR">Puerto Rico</option>
+							<option value="Qatar" id="QA">Qatar</option>
+							<option value="Reino Unido" id="UK">Reino Unido</option>
+							<option value="República Centroafricana" id="CF">República Centroafricana</option>
+							<option value="República Checa" id="CZ">República Checa</option>
+							<option value="República de Sudáfrica" id="ZA">República de Sudáfrica</option>
+							<option value="República Democrática del Congo Zaire" id="CD">República Democrática del
+								Congo Zaire</option>
+							<option value="República Dominicana" id="DO">República Dominicana</option>
+							<option value="Reunión" id="RE">Reunión</option>
+							<option value="Ruanda" id="RW">Ruanda</option>
+							<option value="Rumania" id="RO">Rumania</option>
+							<option value="Rusia" id="RU">Rusia</option>
+							<option value="Samoa" id="WS">Samoa</option>
+							<option value="Samoa occidental" id="AS">Samoa occidental</option>
+							<option value="San Kitts y Nevis" id="KN">San Kitts y Nevis</option>
+							<option value="San Marino" id="SM">San Marino</option>
+							<option value="San Pierre y Miquelon" id="PM">San Pierre y Miquelon</option>
+							<option value="San Vicente e Islas Granadinas" id="VC">San Vicente e Islas Granadinas
+							</option>
+							<option value="Santa Helena" id="SH">Santa Helena</option>
+							<option value="Santa Lucía" id="LC">Santa Lucía</option>
+							<option value="Santo Tomé y Príncipe" id="ST">Santo Tomé y Príncipe</option>
+							<option value="Senegal" id="SN">Senegal</option>
+							<option value="Serbia y Montenegro" id="YU">Serbia y Montenegro</option>
+							<option value="Sychelles" id="SC">Seychelles</option>
+							<option value="Sierra Leona" id="SL">Sierra Leona</option>
+							<option value="Singapur" id="SG">Singapur</option>
+							<option value="Siria" id="SY">Siria</option>
+							<option value="Somalia" id="SO">Somalia</option>
+							<option value="Sri Lanka" id="LK">Sri Lanka</option>
+							<option value="Suazilandia" id="SZ">Suazilandia</option>
+							<option value="Sudán" id="SD">Sudán</option>
+							<option value="Suecia" id="SE">Suecia</option>
+							<option value="Suiza" id="CH">Suiza</option>
+							<option value="Surinam" id="SR">Surinam</option>
+							<option value="Svalbard" id="SJ">Svalbard</option>
+							<option value="Tailandia" id="TH">Tailandia</option>
+							<option value="Taiwán" id="TW">Taiwán</option>
+							<option value="Tanzania" id="TZ">Tanzania</option>
+							<option value="Tayikistán" id="TJ">Tayikistán</option>
+							<option value="Territorios británicos del océano Indico" id="IO">Territorios británicos del
+								océano Indico</option>
+							<option value="Territorios franceses del sur" id="TF">Territorios franceses del sur</option>
+							<option value="Timor Oriental" id="TP">Timor Oriental</option>
+							<option value="Togo" id="TG">Togo</option>
+							<option value="Tonga" id="TO">Tonga</option>
+							<option value="Trinidad y Tobago" id="TT">Trinidad y Tobago</option>
+							<option value="Túnez" id="TN">Túnez</option>
+							<option value="Turkmenistán" id="TM">Turkmenistán</option>
+							<option value="Turquía" id="TR">Turquía</option>
+							<option value="Tuvalu" id="TV">Tuvalu</option>
+							<option value="Ucrania" id="UA">Ucrania</option>
+							<option value="Uganda" id="UG">Uganda</option>
+							<option value="Uruguay" id="UY">Uruguay</option>
+							<option value="Uzbekistán" id="UZ">Uzbekistán</option>
+							<option value="Vanuatu" id="VU">Vanuatu</option>
+							<option value="Venezuela" id="VE">Venezuela</option>
+							<option value="Vietnam" id="VN">Vietnam</option>
+							<option value="Wallis y Futuna" id="WF">Wallis y Futuna</option>
+							<option value="Yemen" id="YE">Yemen</option>
+							<option value="Zambia" id="ZM">Zambia</option>
+							<option value="Zimbabue" id="ZW">Zimbabue</option>
+						</select>
+
+					</div>
+
+					<div class="field half">
+						<input type="text" name="state_use" id="state_use" placeholder="Provincia" required />
+					</div>
+					<div class="field half">
+						<input type="text" name="city_user" id="city_user" placeholder="Ciudad" required />
+					</div>
+
+					<div class="field half">
+						<input type="text" name="district_user" id="district_user"
+							onkeypress="return sololetras(event)" placeholder="Barrio" required />
+					</div>
+					<div class="field half">
+						<input type="text" name="street_user" id="street_user" onkeypress="return sololetras(event)"
+							placeholder="Calles" required />
+					</div>
+
+					<div class="field half">
+						<select name="gender_user" id="gender_user" required>
+							<option value="" disabled selected>Género</option>
+							<option value="Masculino">Masculino</option>
+							<option value="Femenino">Femenino</option>
+							<option value="Otro">Otro</option>
+						</select>
+					</div>
+
+					<div class="field half">
+						<input type="text" name="mobile_user" id="mobile_user" value=""
+							placeholder="+593 (Celular habilitado para Whatsapp)" onkeyup="solonumeros(this.id)"
+							required />
+					</div>
+					<div class="field half">
+						<input type="text" name="telephone_user" id="telephone_user" value=""
+							onkeyup="solonumeros(this.id)" placeholder="Teléfono convencional" />
+					</div>
+
+					<div class="field half" style="column-count: 2;">
+
+						<select name="family_responsibilities" onchange="responsibilities()"
+							id="family_responsibilities" required>
+							<option value="" disabled selected>Cargas familiares</option>
+							<option value="si">Si, ¿Cuántas? :</option>
+							<option value="no">No</option>
+						</select>
+						<input type="number" style=" width: 80%; line-height: 2.5;" disabled
+							name="number_responsibilities" onchange="numeroentero(this.id)" min="1" pattern="^[0-9]+"
+							id="number_responsibilities" />
+					</div>
+
+					<div class="field half">
+						<select name="civil_status" id="civil_status" required>
+							<option value="" disabled selected>Estado civil</option>
+							<option value="Soltero/a">Soltero/a</option>
+							<option value="Casado/a">Casado/a</option>
+							<option value="Divorciado/a">Divorciado/a</option>
+							<option value="Viudo/a">Viudo/a</option>
+							<option value="Unionlibre">Unión libre</option>
+
+						</select>
+					</div>
+
+					<div class="field" hidden>
+						<div class="table-wrapper" id="origen3">
+							<table class="alt">
+								<tbody>
+									<tr>
+										<td colspan="4"><input type="number" style="width: 100%;" min="1"
+												pattern="^[0-9]+" onkeyup="solonumeros(this.id)" name="child_age"
+												placeholder="Edad" onkeyup="lectura(this.id)" /></td>
+										<td colspan="4"><select type="text" name="child_sex" placeholder="Sexo"
+												onkeyup="lectura(this.id)">
+												<option value="" disabled selected>Género</option>
+												<option value="Masculino">Masculino</option>
+												<option value="Femenino">Femenino</option>>
+											</select></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="field" id="titleCargas" hidden style="width: 70%;">
+						<h4>Cargas familiares</h4>
+					</div>
+
+					<div class="field" style="width: 100%;	column-count: 2;">
+						<div id="destino3"></div>
+					</div>
+
+
+					<div class="field half">
+						<label for="demo-email">Estudios Realizados: </label>
+					</div>
+					<div class="field half">
+						<label for="demo-email"></label>
+					</div>
+
+					<div class="field half " style="     padding-top: 1%;   width: 25%;">
+						<input type="checkbox" id="bachi" name="bachi" value="no" onclick="titulos(this.id)"> <label
+							for="bachi">Bachillerato</label>
+					</div>
+					<div class="field half" style="padding-top: 1%;   padding-top: 1%;   width: 75%;">
+						<div class="row">
+							<input type="text" name="bachi_title" id="bachi_title" style="width: 49%;margin-right: 1%; "
+								placeholder="Título obtenido" disabled value="" />
+							<input type="text" name="bachi_aca" id="bachi_aca" style="width: 50%;"
+								placeholder="Institución Académica" disabled value="" />
+						</div>
+					</div>
+					<div class="field half " style="     padding-top: 1%;   width: 25%;">
+						<input type="checkbox" id="tercerlevel" name="tercerlevel" value="no"
+							onchange="titulos(this.id)">
+						<label for="tercerlevel">Tercer Nivel</label>
+					</div>
+					<div class="field half" style="padding-top: 1%;   width: 75%;">
+
+						<div class="row">
+							<input type="text" name="tercerlevel_title" id="tercerlevel_title"
+								style="width: 49%;margin-right: 1%;" placeholder="Título obtenido" disabled value="" />
+							<input type="text" name="tercerlevel_aca" id="tercerlevel_aca" style="width: 50%;"
+								placeholder="Institución Académica" disabled value="" />
+						</div>
+					</div>
+					<div class="field half " style="     padding-top: 1%;   width: 25%;">
+						<input type="checkbox" id="master" name="master" value="no" onchange="titulos(this.id)"> <label
+							for="master">Maestría</label>
+					</div>
+					<div class="field half" style="      padding-top: 1%;  width: 75%;">
+						<div class="row">
+							<input type="text" name="master_title" id="master_title"
+								style="width: 49%;margin-right: 1%;" placeholder="Título obtenido" disabled value="" />
+							<input type="text" name="master_aca" id="master_aca" style="width: 50%;"
+								placeholder="Institución Académica" disabled value="" />
+						</div>
+					</div>
+					<div class="field half " style="     padding-top: 1%;   width: 25%;">
+						<input type="checkbox" id="doctorate" name="doctorate" value="no" onchange="titulos(this.id)">
+						<label for="doctorate">Doctorado</label>
+					</div>
+					<div class="field half" style="     padding-top: 1%;   width: 75%;">
+						<div class="row">
+							<input type="text" name="doctorate_title" id="doctorate_title"
+								style="width: 49%;margin-right: 1%;" placeholder="Título obtenido" disabled value="" />
+							<input type="text" name="doctorate_aca" id="doctorate_aca" style="width: 50%;"
+								placeholder="Institución Académica" disabled value="" />
+						</div>
+					</div>
+
+					<div class="field half" style="       width: calc(34% - 1rem);">
+						<select name="own_transport" id="own_transport" required>
+							<option value="" disabled selected>Transporte propio</option>
+							<option value="si">Sí</option>
+							<option value="no">No</option>
+						</select>
+					</div>
+					<div class="field half" style="    width: calc(35% - 1rem);">
+						<select name="license" id="license" onchange="licencia()">
+							<option value="" disabled selected>Licencia de conducir</option>
+							<option value="si">Sí</option>
+							<option value="no">No</option>
+						</select>
+					</div>
+					<div class="field half" style="    width: calc(34% - 1rem);">
+						<select name="license_type" id="license_type" disabled>
+							<option value="" disabled selected>Tipo</option>
+							<option value="A">A</option>
+							<option value="B">B</option>
+							<option value="F">F</option>
+							<option value="A1">A1</option>
+							<option value="C">C</option>
+							<option value="C1">C1</option>
+							<option value="D">D</option>
+							<option value="D1">D1</option>
+							<option value="E">E</option>
+							<option value="E1">E1</option>
+							<option value="G">G</option>
+						</select>
+					</div>
+
+
+					<div class="field">
+						<label for="demo-email">Habilidades Personales : </label>
+					</div>
+
+					<div class="field half" style="    width: calc(34% - 1rem);">
+						<select name="reading_level" id="reading_level" required>
+							<option value="" disabled selected>Nivel de lectura</option>
+							<option value="Mala">Mala</option>
+							<option value="Media">Media</option>
+							<option value="Excelente">Excelente</option>
+						</select>
+
+					</div>
+					<div class="field half" style="    width: calc(35% - 1rem);">
+						<select name="writing_level" id="writing_level" required>
+							<option value="" disabled selected>Nivel de escritura</option>
+							<option value="Mala">Mala</option>
+							<option value="Media">Media</option>
+							<option value="Excelente">Excelente</option>
+						</select>
+					</div>
+					<div class="field half" style="    width: calc(34% - 1rem);">
+						<select name="expresion_level" id="expresion_level" required>
+							<option value="" disabled selected>Nivel de expresión oral</option>
+							<option value="Mala">Mala</option>
+							<option value="Media">Media</option>
+							<option value="Excelente">Excelente</option>
+						</select>
+					</div>
+
+					<div class="field half">
+						<select name="work_experience" id="work_experience" onchange="experiencia(this.id)" required>
+							<option value="" disabled selected>Experiencia laboral</option>
+							<option value="si">Sí</option>
+							<option value="no">No</option>
+						</select>
+					</div>
+					<div class="field half">
+						<select name="english_level" id="english_level" required>
+							<option value="" disabled selected>Nivel de inglés</option>
+							<option value="1">Bajo</option>
+							<option value="2">Medio</option>
+							<option value="3">Alto</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="content" id="tarjetaTrabajo" hidden>
+					<h4>Experiencia</h4>
+
+					<div class="table-wrapper" id="original">
+						<table class="alt">
+							<thead>
+
+							</thead>
+							<tbody>
+								<tr>
+									<td>Tiempo :</td>
+									<td><select name="time" id="time" onchange="">
+											<option value="" disabled selected>Seleccionar</option>
+											<option value="1">De 0 a 6 meses</option>
+											<option value="2">De 6 a 12 meses</option>
+											<option value="3">Más de 1 año</option>
+											<option value="4">De 2 años en adelante</option>
+										</select></td>
+
+								</tr>
+								<tr>
+									<td>Área de trabajo:</td>
+									<td colspan="4"><select name="work_area" onchange="">
+											<option value="" disabled selected>Seleccionar</option>
+											<option value="Administración, Contabilidad y Finanzas">Administración,
+												Contabilidad y Finanzas</option>
+											<option value="Aduana y Comercio Exterior">Aduana y Comercio Exterior
+											</option>
+											<option value="Atención al cliente, Call center y Telemarketing">Atención al
+												cliente, Call center y Telemarketing</option>
+											<option value="Comercial, Ventas y Negocios">Comercial, Ventas y Negocios
+											</option>
+											<option value="Comunicación, Relaciones Públicas">Comunicación, Relaciones
+												Públicas</option>
+											<option value="Departamento técnico">Departamento técnico</option>
+											<option value="Asesoría Jurídica">Asesoría Jurídica</option>
+											<option value="Diseño">Diseño</option>
+											<option value="Educación, Docencia e Investigación">Educación, Docencia e
+												Investigación</option>
+											<option value="Gerencia y Dirección General">Gerencia y Dirección General
+											</option>
+											<option value="Ingeniería Civil y Construcción">Ingeniería Civil y
+												Construcción</option>
+											<option value="Marketing y Publicidad">Marketing y Publicidad</option>
+											<option value="Recursos Humanos y Capacitación">Recursos Humanos y
+												Capacitación</option>
+											<option value="Secretarias y Recepción">Secretarias y Recepción</option>
+											<option value="Seguros">Seguros</option>
+											<option value="Trabajo Social">Trabajo Social</option>
+											<option value="Tecnología, Sistemas y Telecomunicaciones">Tecnología,
+												Sistemas y Telecomunicaciones</option>
+											<option value="Otro">Otro</option>
+										</select></td>
+								</tr>
+								<tr>
+									<td>Empresa :</td>
+									<td colspan="4"><input type="text" name="business" />
+									</td>
+								</tr>
+								<tr>
+									<td>Cargo :</td>
+									<td colspan="4"><input type="text" name="position" />
+									</td>
+								</tr>
+								<tr>
+									<td>Funciones :</td>
+									<td colspan="4"><input type="text" name="function" />
+									</td>
+								</tr>
+								<tr>
+									<td>Referencia:</td>
+									<td colspan="4"><input type="text" name="reference" />
+									</td>
+								</tr>
+								<tr>
+									<td>Numero de contacto :</td>
+									<td colspan="4"><input type="number" name="number_contact" /> </td>
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+
+
+				</div>
+				<div class="content" id="copias">
+					<div id="copia">
+					</div>
+					<input type="hidden" id="botonclonar2" onclick="clonar2('original','copia')"
+						value="Añadir Experiencia" />
+				</div>
+				<br>
+				<div class="content">
+					<div class="table-wrapper" id="origen">
+						<table class="alt">
+							<tbody>
+								<tr>
+									<td>Curso Realizado :</td>
+									<td colspan="4"><input type="text" name="courses" id="courses"
+											onkeyup="lectura(this.id)" /></td>
+								</tr>
+
+
+							</tbody>
+						</table>
+
+					</div>
+					<div id="destino">
+
+					</div>
+					<input type="button" onclick="clonar('origen','destino')" value="Añadir Curso" />
+
+
+				</div>
+
+
+				<br>
+				<br>
+				<div class="fields">
+				<div class="field">
+					<label for="demo-email"> REDES SOCIALES: </label>
+					<p id="avisored" hidden style="color: crimson; font-weight: 10px;">* 	Registre por lo menos una red social</p>
+				</div>
+				<div class="field half" style="column-count: 2;">
+					<label for="demo-email" style="padding-top: 3%;padding-left: 5%;">Facebook </label>
+					<input type="text" style="width: 80%"  name="facebook" id="facebook"
+						placeholder="Link de facebook" onkeyup="redsocial()" />
+				</div>
+				<div class="field half" style="column-count: 2;">
+					<label for="demo-email" style="padding-top: 3%;padding-left: 5%;">Instagram</label>
+					<input type="text" style="width: 80%"  name="instagram" id="instagram"
+						 placeholder="Link de Instagram"  onkeyup="redsocial()" />
+				</div>
+				<div class="field half" style="column-count: 2;">
+					<label for="demo-email" style="padding-top: 3%;padding-left: 5%;">Linkedin </label>
+					<input type="text" style="width: 80%"  name="linkedin" id="linkedin"
+						 placeholder="Link de Linkedin" onkeyup="redsocial()" />
+				</div>
+				<div class="field half" style="column-count: 2;">
+					<label for="demo-email" style="padding-top: 3%;padding-left: 5%;">Twitter</label>
+					<input type="text" style="width: 80%"  name="twitter" id="twitter"
+						 placeholder="Link de Twitter"  onkeyup="redsocial()" />
+				</div>
+				
+				
+					
+					<div id="teacherid" hidden class="field">
+						<select name="teacher" id="teacher">
+							<option value="" disabled selected>Seleccionar Especialidad </option>
+							<option value="Cultura física y deportes">Cultura física y deportes</option>
+							<option value="Inglés">Inglés</option>
+							<option value="Robótica">Robótica</option>
+						</select>
+					</div>
+
+					<div class="field">
+						<label for="demo-message">Informaci&oacuten Adicional</label>
+						<textarea name="add_information" id="add_information"
+							placeholder="Ingresa información adicional que creas relevante para tu currílulum"
+							rows="6"></textarea>
+					</div>
+
+					<div class="field">
+						<label for="photo" class="subir" style="width: 20%;">
+							<i class="fas fa-cloud-upload-alt"></i> Subir Foto de Perfil
+						</label>
+						<input id="ext_img" name="ext_img" hidden />
+						<input id="photo" name="photo" accept="image/*" type="file" style='display: none;'  />
+						<div id="info"></div>
+						<input  id="photo_user" hidden  name="photo_user" />
+						Tamaño máximo: 5MB/ Formato: JPG o PNG
+					</div>
+				</div>
+				<input type="checkbox" id="condicion" onclick="visualizarContinuar()" name="condicion" value="Bike">
+				<label for="condicion">Acepto que mis datos proporcionados con fines de empleabilidad, se compartan a empresas e instituciones que les interese mi currículum.</label><br>
+				<div id="btnContinuar" hidden>
+					<ul class="actions"  >
+						<li><input type="submit" value="Enviar" id="btnEnviar"  disabled name="btnEnviar"
+								onclick="return confirm('FORMA PARTE DE NUESTRO EQUIPO                                                        Da clic en aceptar para registrar tu hoja de vida.  Con tu aceptación confirmas la veracidad de los datos completados.  '  )"
+								class="button primary" />
+								<p id="photo_msj">Se requiere de su foto de perfil</p>
+						</li>
+
+					</ul>
+				</div>
+
+			</form>
+		</div>
+		<p class="respuesta"></p>
+	</section>
+	<img id="img" height="150">
+
+</body>
+<script>
+	function visualizarContinuar(){
+		if($("#condicion").prop('checked')){
+			$("#btnContinuar").removeAttr('hidden');
+
+		}else{
+			$("#btnContinuar").attr('hidden',true);
+
+		}
+		
+	}
+	function readFile() {
+		var pdrs = document.getElementById('photo').files[0].name;
+		document.getElementById('info').innerHTML = pdrs;
+		if (this.files && this.files[0]) {
+			$("#btnEnviar").removeAttr('disabled');
+			$("#photo_msj").attr('hidden','true');
+			var FR = new FileReader();
+			var hola = getFileExtension3(this.files[0].name);
+			$("#ext_img").val(hola);
+			FR.addEventListener("load", function (e) {
+				//document.getElementById("img").src = e.target.result;
+				$("#photo_user").val(e.target.result);
+			});
+			FR.readAsDataURL(this.files[0]);
+		}
+	}
+	function getFileExtension3(filename) {
+		return (/[.]/.exec(filename)) ? /[^.]+$/.exec(filename)[0] : undefined;
+	}
+	document.getElementById("photo").addEventListener("change", readFile);
+</script>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+
+</html>

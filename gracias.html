@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<!--
+	Paradigm Shift by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head> 
+	<title>Registro</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<link rel="icon" href="images/icon-nodo.png">
+	<link rel="stylesheet" href="assets/css/main.css" />
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+	<script language="javascript" type="text/javascript"
+		src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.10.0/jquery.validate.min.js"></script>
+	<script type="text/javascript"
+		src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.10.0/localization/messages_es.js"></script>
+
+	<script>
+		$(document).ready(function(){
+			$("#nombre").text(localStorage.getItem('nombre'));
+	
+		});
+	</script>
+</head>
+<body style="background: #fff;">
+	<!-- Wrapper -->
+	<div style="text-align: center; margin-top:15%; padding-left: 10%; padding-right: 10%; ;">
+        <h2 style=" color: #E31717;   font-size: 2.2vw; ">Gracias <span id="nombre"></span> por registrar tu CV en NODO, lo revisaremos y nos pondremos en contacto contigo pronto.
+        </h2>
+        <p> </p>
+        
+	</div>
+
+	<script> </script>
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+
+</html>
