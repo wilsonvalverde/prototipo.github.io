@@ -1799,3 +1799,6 @@ background-color: #003f7212;
     border: solid;
     border-color: #F4AB14;
 }
+.info_dow{    margin: 9px 3px 31px 20%;
+    color: #003f72;}
+.info_dow a{color: #F4AB14;}
