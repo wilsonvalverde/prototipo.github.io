@@ -1801,4 +1801,42 @@ background-color: #003f7212;
 }
 .info_dow{    margin: 9px 3px 31px 20%;
     color: #003f72;}
-.info_dow a{color: #F4AB14;}
+.info_dow a{color: #F4AB14; }
+.new_header{
+    background-color: #003f72;
+    padding: 0 0;
+    padding-top: 0px;
+    margin-top: 0;
+    margin-right: 22%;
+    margin-bottom: 0;
+    position: absolute;
+    width: 58%;
+    padding-left: 57px;
+    height: 90px;
+    margin-top: -20px;
+    right: 0;
+}
+.new_logo_section{
+    margin-left: 79%;
+    margin-top: -70px;
+}
+.volver{
+    padding: 1vw 2vw 0vw;
+    display: flex;
+    width: 20%;
+    background-color: #F4AB14;
+    margin-top: -24px;
+    height: 95px;
+}
+.volver a{
+    font-weight: 700;
+    font-size: 2vw;
+    margin: auto;
+    color: #0056b3 !important;
+    cursor: pointer;
+}
+.volver img{
+    width: 19%;
+    margin: auto 1px;
+    cursor: pointer;
+}
