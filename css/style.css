@@ -388,8 +388,8 @@ a.readmore_bt {
    margin-top: -15px;
    padding-bottom: 6px;
    display: flex;
-   margin-left: -2px;
-   width: 127%;
+   margin-left: 35px;
+   width: 128%;
 }
 nav.main-menu {
     float: left;
@@ -1011,11 +1011,10 @@ nav.main-menu {
    margin-right: 0;
    margin-bottom: 0;
    position: absolute;
-   width: 79%;
+   width: 76%;
    padding-left: 61px;
    height: 90px;
-  
-  margin-top: -20px;
+   margin-top: -20px;
    right: 0;
 }
 
