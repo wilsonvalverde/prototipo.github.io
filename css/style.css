@@ -1084,7 +1084,7 @@ background-repeat: no-repeat;
 
 .header-top {
     background:url(../images/banner2.jpg);
-    background-size: 100% 100%;
+    background-size: auto;
     background-repeat: no-repeat;
     padding-bottom: 50px;
 }
@@ -1838,4 +1838,13 @@ background-color: #003f7212;
     width: 19%;
     margin: auto 1px;
     cursor: pointer;
+}
+.content_video iframe{
+    width: 60%;
+    margin: auto;
+    height: 468px;
+}
+.content_video{
+    margin: 22px;
+    display: flex;
 }
