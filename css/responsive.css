@@ -257,13 +257,17 @@ max-width: 122px;
    }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 767px) { 
     .logo_foot{
         width: 18%;
     }
     .content_video{
     margin: 9px;
 }
+    .content_video iframe{
+        width: 94%;
+        height: 185px;
+    }
 .figure_dass img {
     width: 85% !important;
 }
