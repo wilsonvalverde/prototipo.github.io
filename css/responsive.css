@@ -268,6 +268,13 @@ max-width: 122px;
         width: 94%;
         height: 185px;
     }
+    .content_diapos{
+    margin-top: 0px;
+}
+.content_diapos iframe{
+    width: 100%;
+    height: auto;
+}
 .figure_dass img {
     width: 85% !important;
 }

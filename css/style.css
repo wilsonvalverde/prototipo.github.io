@@ -1848,3 +1848,12 @@ background-color: #003f7212;
     margin: 22px;
     display: flex;
 }
+.content_diapos{
+    display: flex;
+    margin: 23px;
+}
+.content_diapos iframe{
+    margin: auto;
+    width: 61%;
+    height: 469px;
+}
