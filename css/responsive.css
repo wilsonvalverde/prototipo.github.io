@@ -284,26 +284,28 @@ max-width: 122px;
         animation-duration: 0.4s;
         display: flex;
     }    
-    .vista{  top: 0;
+    .vista{
+        top: 0;
         position: fixed;
         float: right;
         border-radius: 8vw;
         padding: 11px;
         margin: 21px;
-        margin-top: 218%;
+        margin-top: 153%;
         margin-left: 78%;
         background: white;
         width: 50px;
         height: 50px;
         z-index: 999;
     }
-    .idioma{   top: 0;
+    .idioma{
+        top: 0;
         position: fixed;
         float: right;
         border-radius: 8vw;
         padding: 11px;
         margin: 21px;
-        margin-top: 218%;
+        margin-top: 136%;
         margin-left: 78%;
         background: white;
         width: 50px;
@@ -365,6 +367,7 @@ max-width: 122px;
 
 display: block;
 
+padding: 61px;
 }
    .target_person {width: 100%;}
    .box_bg_img .box_my{
