@@ -2026,12 +2026,18 @@ max-width: 85%;
         height: 60px;
     
     }
+    .vista:hover img{ 
+        width: 80%;
+    
+    }
 
-    .idioma{    top: 0;
+    .idioma{
+        display: flex;
+        top: 0;
         position: fixed;
         float: right;
         border-radius: 8vw;
-        padding: 11px;
+        padding: 14px;
         margin: 21px;
         margin-top: 34%;
         margin-left: 95%;
@@ -2040,6 +2046,7 @@ max-width: 85%;
         height: 50px;
         z-index: 999;
     }
+    .idioma p{margin: auto;}
     .idioma img{
         width: 100%;
     }
