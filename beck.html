@@ -33,7 +33,7 @@
 </head>
 <!-- body -->
 
-<body class="main-layout">
+<body class="main-layout back">
   <!-- loader  -->
   <div class="loader_bg">
     <div class="loader"><img src="images/loading.gif" alt="#" /></div>
@@ -46,11 +46,31 @@
       <div class="header">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-xl-2 col-lg-4 col-md-4 col-sm-3 col logo_section">
+            <div class="volver">
+              <img onclick="location.href = 'https://wilsonvalverde.github.io/prototipo.github.io/' " ;
+                src="icon/volver.png">
+              <a href="index.html">VOLVER</a>
+
+            </div>
+            <div class="">
+              <div class="header_information new_header">
+                <div class="menu-area">
+                  <div class="limit-box">
+                    <nav class="main-menu ">
+                      <ul class="menu-area-main">
+                        <li class="active"> <a style="font-size: 23px;" href="index.html">Inventario de depresión Beck
+                            (BDI-II) </a> </li>
+                      </ul>
+                    </nav>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-2 col-lg-4 col-md-4 col-sm-3 col logo_section new_logo_section">
               <div class="full">
                 <div class="center-desk">
                   <div class="logo">
-                    <a href="index.html"><img src="images/logo.png" alt="#" /></a>
+                    <a href="https://www.utpl.edu.ec/"><img src="images/logo.png" alt="#" /></a>
                     <div>
                       <p>UNIVERSIDAD TÉCNICA PARTICULAR DE LOJA</p>
                     </div>
@@ -58,341 +78,380 @@
                 </div>
               </div>
             </div>
-            <div class="">
-              <div class="header_information">
-                <div class="menu-area">
-                  <div class="limit-box">
-                    <nav class="main-menu ">
-                      <ul class="menu-area-main">
-                        <li class="active"> <a href="index.html">Inicio</a> </li>
-                        <li> <a href="#courses">Mis cursos </a> </li>
-                        <li> <a href="#about"> ¿Sabías que?</a> </li>
-                        <li> <a href="#learn">Aprender</a> </li>
-                        <li> <a href="#important">Conócenos</a> </li>
-                        <li> <a href="#contact">Contáctanos</a> </li>
-                      </ul>
-                    </nav>
-                  </div>
-                </div>
-              </div>
-            </div>
+
+
           </div>
         </div>
       </div>
-      <!-- end header inner -->
-
-      <!-- end header -->
-      <section class="slider_section">
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-          </ol>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-
-              <div class="container-fluid padding_dd">
-                <div class="carousel-caption">
-                  <div class="row">
-                    <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
-                      <div class="text-bg">
-                        <h1>Escala de depresión estrés y ansiedad (DASS-21)</h1>
-                        <p>Evaluación Psicológica</p>
-                        <a href="#">LEER MÁS</a>
-                      </div>
-                    </div>
-                    <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12">
-                      <div class="images_box">
-                        <figure><img src="images/dass.png"></figure>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-
-              <div class="container-fluid padding_dd">
-                <div class="carousel-caption">
-
-                  <div class="row">
-                    <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
-                      <div class="text-bg">
-                        <h1>Inventario de depresión Beck (BDI-II)</h1>
-                        <p>Entrevista Psicológica</p>
-                        <a href="#">LEER MÁS</a>
-                      </div>
-                    </div>
-
-                    <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12">
-                      <div class="images_box">
-                        <figure><img class="bdi" src="images/bdi.png"></figure>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-    </div>
-    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-    </div>
-
-    </section>
     </div>
   </header>
+  <button title="Vista Daltónica" class="vista" id="vista"><img src="icon/eye.png"> </button>
 
-
-
-  <!-- about  -->
-  <div id="about" class="about">
-    <div class="container">
-      <div class="row">
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-          <div class="about-box">
-            <h2>La<strong class="yellow"> Ansiedad</strong></h2>
-            <p style="text-align: justify;"> La ansiedad es una sensación de nerviosismo, preocupación o malestar que
-              forma parte de la experiencia
-              humana normal. También está presente en una amplia gama de trastornos psiquiátricos, incluidos el
-              trastorno de ansiedad generalizada, el trastorno de angustia y las fobias. Si bien cada uno de estos
-              trastornos es diferente, todos presentan una aflicción y una disfunción específicamente relacionadas con
-              la ansiedad y el miedo. (Barnhill, J. W., 2021) </p>
-            <a target="_blank"
-              href="https://www.msdmanuals.com/es-ec/hogar/trastornos-de-la-salud-mental/ansiedad-y-trastornos-relacionados-con-el-estr%C3%A9s/introducci%C3%B3n-a-los-trastornos-de-ansiedad">LEER
-              MÁS</a>
-          </div>
-        </div>
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-          <div class="about-box">
-            <figure><img src="images/ansiedad.png" alt="#" /></figure>
-          </div>
-        </div>
-      </div>
-      <br>
-      <div class="row">
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-          <div class="about-box">
-            <figure><img src="images/depresion.png" alt="#" /></figure>
-          </div>
-        </div>
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-          <div class="about-box">
-            <h2>La<strong class="yellow"> Depresión</strong></h2>
-            <p style="text-align: justify;">La depresión es un trastorno del estado de ánimo que implica un sentimiento
-              persistente de tristeza y pérdida de interés. Es diferente de las fluctuaciones del estado de ánimo que
-              las personas experimentan habitualmente como parte de la vida. Los acontecimientos importantes de la vida,
-              como el duelo o la pérdida de un trabajo, pueden provocar depresión. Sin embargo, los médicos sólo
-              consideran que, si son persistentes, los sentimientos de dolor forman parte de la depresión. La depresión
-              es un problema continuo, no pasajero. Consiste en episodios durante los cuales los síntomas duran al menos
-              2 semanas. La depresión puede durar varias semanas, meses o años. (Goldman, L., 2020) </p>
-            <a target="_blank" href="https://www.medicalnewstoday.com/articles/es/depresion#sintomas">LEER MÁS</a>
-          </div>
-        </div>
-
-      </div>
-      <br>
-      <div class="row">
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-          <div class="about-box">
-            <h2>El<strong class="yellow"> Estrés</strong></h2>
-            <p style="text-align: justify;">Se considera estrés al mecanismo que se pone en marcha cuando una persona se
-              ve envuelta por un exceso de situaciones que superan sus recursos. Por lo tanto, se ven superados para
-              tratar de cumplir con las demandas que se le exigen para superarlas. En estos casos, el individuo
-              experimenta una sobrecarga que puede influir en el bienestar tanto físico como psicológico y personal.
-              (Ponce, I. G., 2021)</p>
-            <a target="_blank" href="https://cuidateplus.marca.com/enfermedades/psicologicas/estres.html">LEER MÁS</a>
-          </div>
-        </div>
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-          <div class="about-box">
-            <figure><img src="images/estres.png" alt="#" /></figure>
-          </div>
-        </div>
-      </div>
-
-
-
-
-
-    </div>
-  </div>
-  <div id="learn" class="learn">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="titlepage idea_person">
-            <h2>Ti<strong class="yellow">ps</strong></h2> <br>
-
-            <div> <img src="icon/idea.png">
-              <p> El ejercicio es una de las cosas más importantes que
-                puedes hacer para combatir el estrés.</p>
-            </div>
-
-            <div><img src="icon/idea.png">
-              <p>
-                Disminuir la cafeína es un estimulante que se encuentra en el café, té, chocolate y en las bebidas
-                energizantes. Ya que en altas dosis pueden incrementar la ansiedad.</p>
-            </div>
-            <div><img src="icon/idea.png">
-              <p> Llevar un diario puede ayudar a aliviar el estrés y la
-                ansiedad, especialmente si te enfocas en lo
-                positivo. </p>
-            </div>
-            <div><img src="icon/idea.png">
-              <p> Tener vínculos sociales fuertes puede ayudarte a
-                sobrellevar momentos estresantes, reducir tu riesgo
-                de ansiedad y depresión.</p>
-            </div>
-            <div><img src="icon/idea.png">
-              <p> Las prácticas de conciencia plena pueden ayudar a
-                reducir
-                los síntomas de la ansiedad y la depresión. </p>
-            </div>
-            <div><img src="icon/idea.png">
-              <p> Mantener una buena alimentación. La depresión puede
-                afectar al apetito.</p>
-            </div>
-            <div><img src="icon/idea.png">
-              <p> Cuando una persona está deprimida, puede tener
-                bloqueadas
-                la creatividad y la capacidad para disfrutar
-                de las cosas, dificultades para expresarse. Ejercita tu imaginación (pintando, dibujando, haciendo
-                garabatos, cosiendo, escribiendo, bailando, componiendo música, etc.) </p>
-            </div>
-
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- end abouts -->
-  <div id="important" class="row">
-
-
-    <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12">
-      <div class="box_bg">
-        <div class="box_bg_img">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="titlepage title_person">
-                <h2>C<strong class="yellow">onócenos</strong></h2>
-                <span>"Porque si en algún momento necesitas de algo, no pienses dos veces antes de contactarme"</span>
-              </div>
-            </div>
-          </div>
-          <div class="row row_target_person">
-            <div class="target_person">
-              <div class="box_my">
-                <figure><img src="images/valdivieso.png"></figure>
-                <div class="overlay">
-                  <h3>Emely Valdivieso</h3>
-                  <p> Estudiante de Psicología Clínica
-                    eavaldivieso1@utpl.edu.ec </p>
-                </div>
-              </div>
-            </div>
-            <div class="target_person">
-              <div class="box_my">
-                <figure><img src="images/gerrero.png"></figure>
-                <div class="overlay">
-                  <h3>Johanna Guerrero</h3>
-                  <p>Estudiante de Psicología Clínica
-                    jpguerrero16@utpl.edu.ec </p>
-                </div>
-              </div>
-            </div>
-            <div class="target_person">
-              <div class="box_my">
-                <figure><img src="images/cueva.png"></figure>
-                <div class="overlay">
-                  <h3>Nicole Cueva</h3>
-                  <p>Estudiante de Psicología Clínica
-                    ncueva2@utpl.edu.ec</p>
-                </div>
-              </div>
-            </div>
-            <div class="target_person">
-              <div class="box_my">
-                <figure><img src="images/ochoa.png"></figure>
-                <div class="overlay">
-                  <h3>Suanny Ochoa</h3>
-                  <p>Estudiante de Psicología Clínica
-                    Smochoa2@utpl.edu.ec </p>
-                </div>
-              </div>
-            </div>
-            <div class="target_person">
-              <div class="box_my">
-                <figure><img src="images/uzon.png"></figure>
-                <div class="overlay">
-                  <h3>Antonella Luzón</h3>
-                  <p>Estudiante de Psicología Clínica
-                    ialuzon@utpl.edu.e</p>
-                </div>
-              </div>
-            </div>
-
-
-
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- end our -->
-
-
-
-
-  <!-- MAKE -->
-  <div class="make">
+  <div id="learn" class="learn back-learn">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
           <div class="titlepage">
-            <h2>Make Your <strong class="white_colo">Courses Standout</strong></h2>
+            <h2 style="text-align: center;">In<strong class="yellow">formación</strong></h2>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
-          <div class="make_text">
-            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical
-              Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
-              Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a
-              Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the
-              undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum"
-              (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of
-              ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit
-              amet..", comes from a line in section 1.10.32.
-            </p>
-            <a href="Javascript:void(0)">Strat now</a>
-          </div>
-        </div>
-        <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
-          <div class="make_img">
-            <figure><img src="images/make_img.jpg"></figure>
+        <div class="col-md-12">
+          <div class="learn_box">
+            <figure class="figure_dass"><img src="images/bdi.png" alt="img" /></figure>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!-- end MAKE -->
-  <!-- end learn -->
+
+  <div class="acoordeon_test">
+    <button class="accordion1">Ficha Técnica</button>
+    <div class="panel1 border_pa"> <br>
+      <p>Seleccione el contenido que desea visualizar</p><br>
+      <button class="accordion1">Nombre:</button>
+      <div class="panel1"><br>
+        <p> Inventario de Depresión de Beck (BDI-II).
+        </p><br>
+      </div>
+      <button class="accordion1">Autor y Año:</button>
+      <div class="panel1"><br>
+        <p>Aaron T. Beck, Robert A. Steer y Gregory K. Brown 1996.
+        </p><br>
+      </div>
+      <button class="accordion1">Constructo que Evalúa:</button>
+      <div class="panel1"><br>
+        <p>Depresión.
+        </p><br>
+      </div>
+      <button class="accordion1">Tiempo de Aplicación:</button>
+      <div class="panel1"><br>
+        <p>De 5 a 10 minutos.
+        </p><br>
+      </div>
+      <button class="accordion1">Edades de Aplicación:</button>
+      <div class="panel1"><br>
+        <p>De 13 años en adelante
+        </p><br>
+      </div>
+      <button class="accordion1">Validación:</button>
+      <div class="panel1"><br>
+        <p>La validez del constructo es que algunas traducciones del BDI-II que existen en el
+          mundo no tienen datos sobre su estructura factorial (Uslu et al., 2008; Van Voorhis y Blumentritt,
+          2007). En español, hasta donde sabemos, sólo dos publicaciones sobre BDI-II han estudiado su
+          modelo teórico en adolescentes mediante análisis factorial confirmatorio (AFC). La falta de
+          investigación sobre la estructura factorial de la herramienta y la inconsistencia de las dimensiones
+          de agrupación de síntomas resalta la necesidad de continuar estudiando el ajuste del modelo
+          teórico original de Beck et al. Depresión.
+        </p><br>
+      </div>
 
 
+      <br>
+    </div>
+
+    <button class="accordion1">Sustento teórico</button>
+    <div class="panel1 border_pa"><br>
+      <p>Seleccione el contenido que desea visualizar</p> <br>
+      <button class="accordion1">Conceptualización del Constructo a evaluar:</button>
+      <div class="panel1"><br>
+        <p>Según la OMS, la depresión es un trastorno mental frecuente, que se caracteriza por la presencia
+          persistente de tristeza y una pérdida de interés en actividades que las personas normalmente disfrutan,
+          acompañada de una incapacidad para llevar a cabo las actividades diarias, durante 14 días o más.
+          (Mitchell, C.,2021).</p>
+        <p>Navarro (1990) señala que la depresión es aquella que interfiere en gran medida con la creatividad
+          y hace que disminuya el gusto por el trabajo, el estudio, las rutinas diarias y las actividades que antes
+          disfrutaba. Igualmente la depresión dificulta las relaciones con los demás. En las depresiones de cierta
+          severidad algunas personas se aíslan, llegan a comportarse indiferentes por casi todo y los
+          pensamientos de suicidio son muy comunes. (Martinez, R., 2008)
+        </p>
+        <p>Beck (1979), define la depresión como el síndrome en el que interactúan diversas modalidades:
+          somática, afectiva, conductual y cognitiva. Considerando que las distorsiones cognitivas en el análisis y
+          procesamiento de la información, son la causa principal del desorden a partir del cual se desatan los
+          componentes restantes. (García Alonso, A., 2009)</p>
+      </div>
+      <br>
+    </div>
+
+    <button class="accordion1">Resumen de la historia del test</button>
+    <div class="panel1 border_pa"><br>
+      <p>Seleccione el contenido que desea visualizar</p> <br>
+      <button class="accordion1">¿En qué año se creó?</button>
+      <div class="panel1"><br>
+        <p>La versión original se creó en el año 1961.</p><br>
+      </div>
+      <button class="accordion1">¿Bajo qué necesidad se creó?</button>
+      <div class="panel1"><br>
+        <p>Ha sido creado para evaluar la gravedad de sintomatología depresiva en adultos y adolescentes
+          con una edad mínima de 13 años.
+        </p><br>
+      </div>
+      <button class="accordion1">¿Existen adaptaciones al contexto ecuatoriano o latinoamericano?</button>
+      <div class="panel1"><br>
+        <p>Hasta el momento existen cinco adaptaciones, cuatro adaptadas al contexto latinoamericano
+          Amaro (2015) en Perú; Contreras (2015) en México; Lipps, et al., (2017) en Jamaica. Y la adaptación
+          más reciente en Ecuador por Astudillo y Quezada (2021).
+        </p><br>
+      </div>
+      <br>
+    </div>
+    <button class="accordion1">Información psicométrica</button>
+    <div class="panel1 border_pa"><br>
+      <p>Seleccione el contenido que desea visualizar</p><br>
+      <button class="accordion1">¿Cuál fue la ténica o los métodos usadospara validar la entrevista?</button>
+      <div class="panel1"><br>
+        <p>Muestra una correlación variable con otras escalas (HDRS, SDS, MADRS...). En pacientes
+          psiquiátricos se han encontrado valores entre 0,55 y 0,96 (media 0,72) y en sujetos no
+          psiquiátricos entre 0,55 y 0,73 (media 0,6).
+
+        </p>
+        <p>Muestra también una buena sensibilidad al cambio, similar o algo inferior a la del HDRS
+          (Escala de depresión de Hamilton), con una correlación alta con la mejoría clínica evaluada por
+          expertos, tanto en terapias farmacológicas, como psicológicas</p>
+        <p>Su validez predictiva como instrumento diagnóstico de cribado ha sido recientemente
+          estudiada en nuestro país en una amplia muestra de población general de entre 18 y 64 años
+          de edad, con buen rendimiento: sensibilidad 100 %, especificidad 99 %, valor predictivo positivo
+          0.72, y valor predictivo negativo 1 (punto de corte 13). Anteriormente se había estudiado en
+          distintos grupos de pacientes médicos con criterios dispares en cuanto al punto de corte, por lo
+          que los resultados no eran homogéneos.
+        </p>
+        <br>
+
+      </div>
+
+
+      <br>
+    </div>
+    <button class="accordion1">Normas de aplicación</button>
+    <div class="panel1 border_pa"><br>
+      <p>Seleccione el contenido que desea visualizar</p><br>
+
+      <button class="accordion1"> Tiempo de aplicación</button>
+      <div class="panel1"><br>
+        <p>De 5 a 10 minutos </p><br>
+
+      </div>
+      <button class="accordion1">Materiales</button>
+      <div class="panel1"><br>
+        <p>-Manual con normas de aplicación y corrección e interpretación.<br>
+          - Ejemplar de la prueba .<br>
+          - Lapiz y borrador.
+        </p><br>
+      </div>
+      <button class="accordion1"> Instrucciones para el evaluado.</button>
+      <div class="panel1"><br>
+        <p>En las instrucciones de la versión original del BDI-II se solicita a la persona evaluada que “si
+          dentro del mismo grupo hay más de una afirmación que considere igualmente aplicable a su caso, elija
+          el número más alto” y, en consecuencia, se le pide también que se asegure “de no haber elegido más
+          de una respuesta para cada grupo, particularmente en los ítems 16 (cambios en el patrón de sueño) y
+          18 (cambios en el apetito)”. No obstante, en el estudio piloto de la adaptación española, dos personas
+          (10%) informaron no sentirse cómodas eligiendo una sola alternativa, ya que en algunos ítems había
+          varias alternativas que las describen. Por tanto, y en consonancia con las instrucciones para la aplicación
+          oral del cuestionario, para los estudios de investigación iniciales y análisis psicométricos de la
+          adaptación española, se mantuvieron esas instrucciones , en las que se le pide a la persona evaluada
+          que “si dentro de un mismo grupo, hay más de una afirmación que considere aplicable a su caso,
+          márquela también”, dejando que la elección de la alternativa con el número más alto descansará en el
+          evaluador, no en la persona evaluada (Eduardo., 2013).</p><br>
+
+      </div>
+      <button class="accordion1">Instrucciones para el evaluador.</button>
+      <div class="panel1"><br>
+        <p>El evaluador debe dar instrucciones claras a las personas que se les va administrar la prueba.<br>
+          - Se puede aplicar de forma individual o colectiva.<br>
+          - Se les puede asignar con formato de papel y lápiz o de forma oral.<br>
+          - Cuando se califica el test, si una persona ha elegido varias categorías de respuesta en un ítem,
+          se toma la categoría a la que corresponde la puntuación más alta.<br>
+          - La puntuación máxima para calificar el test es 63.<br>
+          - Seguir los puntos de corte que establece el test para poder clasificar a los evaluados.<br>
+          - Las puntuaciones deben ser interpretadas únicamente por profesionales con la adecuada
+          preparación y experiencia clínica.
+        </p><br>
+
+      </div>
+      <button class="accordion1">Forma de llenar la hoja de respuestas</button>
+      <div class="panel1"><br>
+        <p>Las instrucciones para el BDI-II solicitan a las personas evaluadas que elijan las afirmaciones
+          más características que cubren el marco temporal de las últimas dos semanas, incluido el día de hoy,
+          para ser consistente con los criterios del DSM-IV para la depresión mayor. Cada ítem se responde en
+          una escala de 4 puntos, de 0 a 3, excepto los ítems 16 (cambios en el patrón de sueño) y 18 (cambios
+          en el apetito) que contienen 7 categorías (Eduardo., 2013). </p><br>
+
+      </div>
+
+
+      <br>
+
+    </div>
+    <button class="accordion1">Normas de corrección</button>
+    <div class="panel1 border_pa"><br>
+      <p>Seleccione el contenido que desea visualizar</p> <br>
+      <button class="accordion1">¿Qué indicadores se obtienen del test?</button>
+      <div class="panel1"><br>
+        <p>Se califica sumando los puntajes en cada uno de los reactivos y clasificando la sumatoria total de
+          la siguiente manera: de 0 a 9 puntos: depresión mínima; de 10 a 16 puntos: depresión leve; de 17 a 29
+          puntos: depresión moderada; de 30 a 63 puntos: depresión severa.</p>
+
+        <br>
+      </div>
+
+      <button class="accordion1">¿Cómo se califica? (Existe una clave o una criba para calificarlo)</button>
+      <div class="panel1"><br>
+        <p>El formato de los ítems es de tipo Likert con cuatro categorías de respuesta ordenadas que se
+          codifican de 0 hasta 3. La puntuación es la suma de las respuestas a los 21 ítems. Si una persona ha
+          elegido varias opciones en un ítem, se toma la opción con la puntuación más alta. También se puntúan
+          de 0 a 3 los ítems 16 y 18, que tienen 7 categorías. En estos ítems el Manual recomienda registrar la
+          categoría seleccionada, por su valor diagnóstico. El rango de las puntuaciones va desde 0 a 63 puntos.
+          Cuanto más alta sea la puntuación, mayor será la severidad de los síntomas depresivos. Se establecen
+          cuatro grupos en función de la puntuación total: 0-13, mínima depresión; 14-19, depresión leve; 20-28,
+          depresión moderada; y 29-63, depresión grave. (Eduardo., 2013).
+        </p>
+        <br>
+      </div>
+      <button class="accordion1">¿Existen formas automatizadas de calificación del instrumento?</button>
+      <div class="panel1"><br>
+        <p>No existen formas automatizadas de calificación. </p> <br>
+      </div>
+      <button class="accordion1">¿Cuáles son los criterios para convertir los puntajes en diagnósticos?</button>
+      <div class="panel1"><br>
+        <p>La interpretación de las puntuaciones en el BDI en cualquiera de sus versiones y formas se basa
+          habitualmente en unos criterios o puntuaciones de corte que definen diferentes categorías o niveles de
+          gravedad de sintomatología depresiva.</p>
+        <p>El uso de criterios o puntuaciones de referencia para distinguir distintos niveles de sintomatología
+          es también habitual en muchos otros instrumentos psicopatológicos y responde a una tradición clínica
+          sobre la utilidad de diferenciar niveles sindrómicos en función del número de síntomas presentes y su
+          intensidad. Las puntuaciones de corte del manual original del BDI-II se obtuvieron mediante distintas
+          curvas de las características operativas del receptor o curvas ROC, elaboradas a partir de las
+          puntuaciones en el BDI-II de una muestra de 101 pacientes estadounidenses ambulatorios con
+          trastornos psicológicos, 57 de los cuales tenían un diagnóstico de episodio depresivo mayor, único o
+          recurrente, con el especificador de gravedad del DSM-III-R correspondiente (depresión leve, moderada
+          o grave), y los restantes 44 un diagnóstico de otro trastorno psicológico no depresivo (Sanz et al., S.f).
+        </p>
+        <br>
+
+
+      </div>
+
+      <br>
+    </div>
+
+    <button class="accordion1">Normas de interpretación</button>
+    <div class="panel1 border_pa"><br>
+      <p>Seleccione el contenido que desea visualizar</p><br>
+      <button class="accordion1">¿Qué significa cada uno de los índices que me arrojala entrevista?</button>
+      <div class="panel1"><br>
+        <p>Tiene buenos índices de ajuste, saturaciones elevadas e índices de consistencia interna
+          adecuados para ambas dimensiones. Por lo cual se concluye que el inventario posee adecuados niveles
+          de fiabilidad y validez en la muestra estudiada. (Amaro, Apolos,Rodríguez.,2015)
+        </p>
+        <p>Se ofrecieron para las puntuaciones del BDI-II índices de rendimiento diagnóstico (p. ej.,
+          sensibilidad, especificidad) para detectar pacientes con trastorno depresivo mayor en una muestra
+          española de pacientes externos con trastornos psicológicos. (Sanz., et al. 2014)</p>
+        <p>Las puntuaciones muestran una alta discriminación entre personas con un trastorno depresivo
+          mayor y sin depresión, diagnosticadas mediante entrevistas estructuradas, tanto en muestras de
+          pacientes como en muestras de estudiantes universitarios. En el Manual se incluyen tablas con índices
+          estadísticos valiosos para seleccionar los puntos de corte más apropiados para diversos
+          propósitos.(Consejo general de colegios oficiales de psicólogos & Miembro de la federación
+          europea de Asociaciones de Psicólogos, 2015)</p>
+        <br>
+      </div>
+      <button class="accordion1">¿Cuáles son los puntos de corte que tiene cada indicador y que determinan la línea
+        entre el estado normal y anormal del indicador?</button>
+      <div class="panel1"><br>
+        <p>La interpretación de las puntuaciones en el BDI en cualquiera de sus versiones y formas se basa
+          habitualmente en unos criterios o puntuaciones de corte que definen diferentes categorías o niveles de
+          gravedad de sintomatología depresiva. Así, el manual original del BDI-II (Beck et al., 1996, p. 11)
+          propone las siguientes puntuaciones de corte y grados de depresión correspondientes: 0-13 indica
+          depresión mínima, 14-19 depresión leve, 20-28 depresión moderada y 29-63 depresión grave. Los
+          episodios leves se caracterizan por la presencia de sólo cinco o seis síntomas depresivos y por una
+          incapacidad leve o por una capacidad de función normal, pero a costa de un esfuerzo importante e
+          inhabitual</p>
+        <br>
+      </div>
+
+      <br>
+
+    </div>
+
+
+    <button class="accordion1">Utilidad del test</button>
+    <div class="panel1 border_pa"><br>
+      <p>Para ámbitos clínicos, el tratar con el paciente, diagnosticar y manejar su situación mediante
+        tratamiento y terapias. En cuanto a la investigación, se puede recopilar datos para uso investigativo,
+        para evaluar la muestra de una población tomando en cuenta los objetivos a realizar. Otra labor es para
+        la detección de la presencia y de la gravedad de la depresión en adultos y adolescentes de 13 años o
+        más.
+      </p>
+      <br>
+
+    </div>
+
+
+    <button class="accordion1">Limitaciones del entrevista</button>
+    <div class="panel1 border_pa"><br>
+      <p>Una limitación es que no se aportan en el Manual algunos datos que pueden ser de interés, como
+        indicadores de la estabilidad de las puntuaciones.
+        Otra limitación sería que no se incluye información sobre las implicaciones teóricas y
+        prácticas acerca de las relaciones con el sexo y la edad.
+      </p><br>
+      <br>
+    </div>
+    <button class="accordion1">Bibliografía</button>
+    <div class="panel1 border_pa"><br>
+      <p>
+        Contreras-Valdez, J. A. (s. f.). Validez de constructo del Inventario de Depresión de Beck II para
+        adolescentes. SCIELO. https://www.scielo.cl/scielo.php?script=sci_arttext&pid=S0718-
+        48082015000300004
+      </p>
+      <p>
+        Eduardo. (2013). EVALUACIÓN DEL INVENTARIO BDI-II. https://www.cop.es/uploads/PDF/2013/BDIII.pdf
+      </p>
+      <p>
+        García Alonso, A. (2009). La depresión en adolescentes. Facultad de Psicología. Universidad
+        Complutense de Madrid. http://www.injuve.es/sites/default/files/RJ84-07.pdf
+      </p>
+      <p>
+        Martinez, R. (2008). DEPRESIÓN. Bibliotecas UDLAP.
+        http://catarina.udlap.mx/u_dl_a/tales/documentos/lps/martinez_r_a/capitulo3.pdf
+      </p>
+      <p>Mitchell, C. (2021). «Depresión: hablemos», dice la OMS, mientras la depresión encabeza la lista de
+        causas de enfermedad. Pan American Health Organization / World Health Organization.
+        https://www3.paho.org/hq/index.php?option=com_content&view=article&id=13102:depressionlets-talk-says-who-as-depression-tops-list-of-causes-of-ill-health&Itemid=1926&lang=es
+      </p>
+      <p>
+        Sanz, J., Gutiérrez, S., Gesteira, C., & García, M. (S.f). Criterios y baremos para interpretar las
+        puntuaciones en la adaptación española del "Inventario de Depresión de Beck-II" (BDI-II).
+        Madrid: Universidad Complutense de Madrid
+      </p>
+    </div>
+  </div>
+
+  <h3 class="info_dow">Descargar Información <a target="_blank" href="docs/deck.pdf" download="Dass">Aquí</a></h3>
+  <h3 class="info_dow">Descargar Beck (BDI-II) <a target="_blank" href="docs/check_beck.pdf" download="Dass">Aquí</a>
+  </h3>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="titlepage">
+        <h2 style="text-align: center;">Video<strong class="yellow"> Explicativo</strong></h2>
+      </div>
+    </div>
+  </div>
+  <div class="content_video">
+
+    <iframe src="https://www.youtube.com/embed/DRhYuaPPXZs" title="YouTube video player" frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="titlepage">
+        <h2 style="text-align: center;">Material<strong class="yellow"> Didáctico</strong></h2>
+      </div>
+    </div>
+  </div>
+  <div class="content_diapos">
+    <iframe src="docs/diapos_beck.pdf"></iframe>
+  </div>
 
   <!--  footer -->
   <footr id="contact" class="contact">
@@ -418,14 +477,15 @@
                       <a href="#"><img src="icon/email.png" alt="#" /></a>proyectoascendere@gmail.com
                     </li>
                     <li>
-                      <a href="#"><img src="icon/call.png" alt="#" /></a>+12586954775
+                      <a target="_blank" href="https://wa.me/593995823087"><img src="icon/call.png" alt="#" /> +593
+                        0995823087</a>
                     </li>
                   </ul>
                   <ul class="social_link">
-                    <li><a href="#"><img src="icon/fb.png"></a></li>
-                    <li><a href="#"><img src="icon/tw.png"></a></li>
-                    <li><a href="#"><img src="icon/lin(2).png"></a></li>
-                    <li><a href="#"><img src="icon/instagram.png"></a></li>
+                    <li><a target="_blank" href="https://www.facebook.com/utpl.loja"><img src="icon/fb.png"></a></li>
+
+                    <li><a target="_blank" href="https://www.instagram.com/psicoclinica_feutpl/"><img
+                          src="icon/lin(2).png"></a></li>
                   </ul>
 
                 </div>
@@ -433,7 +493,13 @@
 
               <div class="col-lg-3 col-md-6 col-sm-6 ">
                 <div class="address">
-                  <a href="index.html"> <img class="logo_foot" src="images/logo.png" alt="logo"></a>
+                  <a target="_blank" href="https://www.utpl.edu.ec/"> <img class="logo_foot" src="images/logo.png"
+                      alt="logo"></a>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6 ">
+                <div class="address qr">
+                  <a target="_blank"> <img class="logo_foot" src="icon/qr.png" alt="logo"></a>
                 </div>
               </div>
             </div>
@@ -460,37 +526,23 @@
   <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
   <script src="js/custom.js"></script>
   <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-
-
   <script>
-    // This example adds a marker to indicate the position of Bondi Beach in Sydney,
-    // Australia.
-    function initMap() {
-      var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 11,
-        center: {
-          lat: 40.645037,
-          lng: -73.880224
-        },
-      });
+    var acc = document.getElementsByClassName("accordion1");
+    var i;
 
-      var image = 'images/maps-and-flags.png';
-      var beachMarker = new google.maps.Marker({
-        position: {
-          lat: 40.645037,
-          lng: -73.880224
-        },
-        map: map,
-        icon: image
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function () {
+        this.classList.toggle("active1");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+        } else {
+          //panel.style.maxHeight = panel.scrollHeight + "px";
+          panel.style.maxHeight = "max-content";
+        }
       });
     }
   </script>
-  <!-- google map js -->
-  <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8eaHt9Dh5H57Zh0xVTqxVdBFCvFMqFjQ&callback=initMap"></script>
-  <!-- end google map js -->
-
-
 
 </body>
 

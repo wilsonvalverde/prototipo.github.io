@@ -258,6 +258,45 @@ max-width: 122px;
 }
 
 @media (max-width: 767px) { 
+    .make_row {
+        width: 100% !important;
+    }
+    .idea_person div {
+        display: block;
+    }
+    .row_3 div {
+        margin: 0px;
+        width: 100%;
+    }
+    .modal-content2 {
+        /* margin-top: 39px; */
+        position: relative;
+        background-color: transparent;
+        margin: auto;
+        margin-top: 35%;
+        padding: 0;
+        border: 1px solid #888;
+        width: 76%;
+        box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+        -webkit-animation-name: animatetop;
+        -webkit-animation-duration: 0.4s;
+        animation-name: animatetop;
+        animation-duration: 0.4s;
+        display: flex;
+    }    
+    .vista{  top: 0;
+        position: fixed;
+        float: right;
+        border-radius: 8vw;
+        padding: 11px;
+        margin: 21px;
+        margin-top: 218%;
+        margin-left: 78%;
+        background: white;
+        width: 50px;
+        height: 50px;
+        z-index: 999;
+    }
     .logo_foot{
         width: 18%;
     }

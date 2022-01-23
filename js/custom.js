@@ -1,8 +1,43 @@
 /*---------------------------------------------------------------------
-    File Name: custom.js
+	File Name: custom.js
 ---------------------------------------------------------------------*/
 
 $(function () {
+	var vista = document.getElementById("vista");
+	var variable = 1;
+	vista.onclick = function () {
+		switch (variable) {
+			case 1:
+				$(':root').css('--blue', '#fff');
+				$(':root').css('--yellow', '#000');
+				$(':root').css('--white', '#000');
+				$(':root').css('--black', '#fff');
+				$(':root').css('--font', '#fff');
+				$(':root').css('--font_person', '#fff');
+				$(':root').css('--font_final_person', '#000');
+				$(':root').css('--cambio', '#000');
+				variable = 2;
+
+				break;
+			case 2:
+				$(':root').css('--blue', '#003f72');
+				$(':root').css('--yellow', '#F4AB14');
+				$(':root').css('--white', '#fff');
+				$(':root').css('--black', '#000');
+				$(':root').css('--font', '#0f0824');
+				$(':root').css('--font_person', '#003f72bd');
+				$(':root').css('--font_final_person', '#c3c3c324');
+				$(':root').css('--cambio', '#003f7212');
+				variable = 1;
+
+
+				break;
+
+			default:
+				break;
+		}
+
+	}
 
 	"use strict";
 
@@ -131,7 +166,7 @@ $(function () {
 	});
 
 
-	
+
 	/* Scroll to Top
 	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
 
